@@ -1,0 +1,62 @@
+{
+  "LANDING_PAGE": {
+    "HEADING": "Keep your medical files organized",
+    "HEADING_SUB": "Never lose or misplace your medical documents again, by putting them in custom categories in easily accessible web application!"
+  },
+  "NAVBAR": {
+    "ABOUT": "O nas",
+    "LOGIN": "Zaloguj się",
+    "SIGN_UP": "Utwórz konto"
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Panel użytkownika",
+    "DOCUMENTS": "Dokumenty",
+    "FAMILY": "Rodzina",
+    "CALENDAR": "Kalendarz",
+    "ADD_NEW": "Dodaj nowego członka rodziny"
+  },
+  "SIGN_UP": {
+    "TITLE": "Utwórz konto",
+    "NAME": "Imię",
+    "NAME_PH": "Jak możemy się do Ciebie zwracać?",
+    "EMAIL": "Email",
+    "EMAIL_PH": "twójemail@cośtam.com",
+    "PWD": "Hasło",
+    "REPEAT_PWD": "Powtórz hasło",
+    "PWD_INFO_CHAR": "Minimum 8 znaków",
+    "PWD_INFO_LET": "Minimum 1 wielka litera",
+    "PWD_INFO_NUM": "Minimum 1 cyfra",
+    "PRIV_POLICY": "Zakładając konto, zgadzam się z Polityką Prywatności",
+    "TERMS_COND": "Zakładając konto, zgadzam się z regulaminem serwisu",
+    "HAVE_ACCT": "Masz już konto?",
+    "LOGIN_HERE": "Zaloguj się tutaj",
+    "BTN": "Utwórz konto"
+  },
+  "LOGIN": {
+    "TITLE": "Witaj ponownie!",
+    "EMAIL": "Email",
+    "EMAIL_PH": "twójemail@cośtam.com",
+    "PWD": "Hasło",
+    "REMEMBER_ME": "Nie wylogowuj mnie",
+    "NO_ACCT": "Pierwszy raz u nas?",
+    "SIGNUP_HERE": "Utwórz konto tutaj",
+    "BTN": "Zaloguj"
+  },
+  "ERRORS": {
+    "GENERAL": {
+      "REQUIRED": "To pole jest wymagane",
+      "EMAIL": "Nieprawidłowy adres e-mail"
+    },
+    "PWD": {
+      "CHAR": "Twoje hasło musi składać się z minimum 8 znaków",
+      "UPPERCASE": "Twoje hasło musi zawierać minimum 1 wielką literę",
+      "NUM": "Twoje hasło musi zawierać minimum 1 cyfrę",
+      "DIFFERENT": "Hasła nie są takie same",
+      "WRONG": "Nieprawidłowe hasło"
+    },
+    "RULES": {
+      "PRIVACY": "Dlaczego muszę się zgadzać z Polityką Prywatności?",
+      "TERMS": "Dlaczego muszę się zgadzać z Regulaminem serwisu?"
+    }
+  }
+}

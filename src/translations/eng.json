@@ -1,0 +1,62 @@
+{
+  "LANDING_PAGE": {
+    "HEADING": "Keep your medical files organized",
+    "HEADING_SUB": "Never lose or misplace your medical documents again, by putting them in custom categories in easily accessible web application!"
+  },
+  "NAVBAR": {
+    "ABOUT": "About",
+    "LOGIN": "Login",
+    "SIGN_UP": "Sign up"
+  },
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "DOCUMENTS": "Documents",
+    "FAMILY": "Family",
+    "CALENDAR": "Calendar",
+    "ADD_NEW": "Add new"
+  },
+  "SIGN_UP": {
+    "TITLE": "Sign up",
+    "NAME": "Name",
+    "NAME_PH": "How can we call you?",
+    "EMAIL": "Email",
+    "EMAIL_PH": "youremail@something.com",
+    "PWD": "Password",
+    "REPEAT_PWD": "Repeat password",
+    "PWD_INFO_CHAR": "At least 8 characters",
+    "PWD_INFO_LET": "At least 1 uppercase letter",
+    "PWD_INFO_NUM": "At least 1 number",
+    "PRIV_POLICY": "By signing up, I agree to the Privacy Policy",
+    "TERMS_COND": "By signing up, I agree to the Terms and Conditions",
+    "HAVE_ACCT": "Already have an account?",
+    "LOGIN_HERE": "Log in here",
+    "BTN": "Sign up"
+  },
+  "LOGIN": {
+    "TITLE": "Welcome back!",
+    "EMAIL": "Email",
+    "EMAIL_PH": "youremail@something.com",
+    "PWD": "Password",
+    "REMEMBER_ME": "Keep me logged in",
+    "NO_ACCT": "First time?",
+    "SIGNUP_HERE": "Sign up here",
+    "BTN": "Log in"
+  },
+  "ERRORS": {
+    "GENERAL": {
+      "REQUIRED": "This field is required",
+      "EMAIL": "Email is incorrect"
+    },
+    "PWD": {
+      "CHAR": "Your password must be at least 8 characters",
+      "UPPERCASE": "Your password must contain at least 1 uppercase letter",
+      "NUM": "Your password must contain at least 1 number",
+      "DIFFERENT": "Password are different",
+      "WRONG": "Password is incorrect"
+    },
+    "RULES": {
+      "PRIVACY": "Why I have to agree to Privacy Policy?",
+      "TERMS": "Why I have to agree to the Terms and Conditions?"
+    }
+  }
+}
