@@ -3,6 +3,12 @@
     "HEADING": "Keep your medical files organized",
     "HEADING_SUB": "Never lose or misplace your medical documents again, by putting them in custom categories in easily accessible web application!"
   },
+  "BTNS": {
+    "BACK": "Back",
+    "NEXT": "Next",
+    "DONE": "Done",
+    "SKIP": "Skip"
+  },
   "NAVBAR": {
     "ABOUT": "About",
     "LOGIN": "Login",
@@ -57,6 +63,67 @@
     "RULES": {
       "PRIVACY": "Why I have to agree to Privacy Policy?",
       "TERMS": "Why I have to agree to the Terms and Conditions?"
+    },
+    "FILES": {
+      "TOO_BIG": "It looks like your file is too big",
+      "TYPE": "Wrong file type. Accepted file types: jpg, png, PDF, doc, docx, xml"
     }
+  },
+  "DEFAULT_CATEGORIES": {
+    "PHYSICIAN": "Family Physician",
+    "INTERN_MED": "Internal Medicine Physician",
+    "PEDIAT": "Pediatrician",
+    "OBSTET": "Obstetrician",
+    "GYNECO": "Gynecologist",
+    "SURGEON": "Surgeon",
+    "PSYCHIAT": "Psychiatrist",
+    "CARDIO": "Cardiologist",
+    "DERMATO": "Dermatologist",
+    "ENDO": "Endocrinologist",
+    "GASTRO": "Gastroenterologist",
+    "INFECTIO": "Infectious Disease Physician",
+    "NEPHRO": "Nephrologist",
+    "OPHTHAL": "Ophthalmologist",
+    "OTOLARYN": "Otolaryngologist",
+    "PULMONO": "Pulmonologist",
+    "NEUROLO": "Neurologist",
+    "PHYSIC_EXEC": "Physician Executive",
+    "RADIOLO": "Radiologist",
+    "ANESTHE": "Anesthesiologist",
+    "ONCOLO": "Oncologist",
+    "GENETIC": "Geneticist"
+  },
+  "ADD_DOCS": {
+    "ATTACH": "Attachments",
+    "DONE": "Done!",
+    "DRAG_DROP": "Drag and drop here or",
+    "BROWSE": "Browse files",
+    "ACCEPT": "Accepted file types: jpg, png, PDF, doc, docx, xml",
+    "UPLOADING": "Uploading...",
+    "UPLOADED": "Uploaded",
+    "WELL_DONE": "Well done!",
+    "FINAL_TXT": "You are keeping your files organized",
+    "ADD": "Add new",
+    "FILE_INFO": "File information",
+    "INFO": {
+      "NAME": "Name",
+      "NAME_PH": "RTG left knee",
+      "CATEGORY": "Category",
+      "CATEGORY_PH": "Orthopaedist",
+      "DATE": "Date",
+      "RESULT": "Result",
+      "RESULT_PH": "Norm"
+    }
+  },
+  "TUTORIAL": {
+    "STEP": "Step",
+    "NEW_FILE": "New file",
+    "ADD_FILE": "Add a new file",
+    "CUSTOMIZE": "Customize file's Name, Category, Date and Result",
+    "MANAGE": "Manage files",
+    "MARK": "Mark a rectangle next to the file",
+    "DEL_SHARE_EDIT": "To easy Delete, Edit or Share your file",
+    "FAMILY": "Family",
+    "ADD_MEMBER": "Add new family members and manage their files!"
   }
 }
