@@ -1,11 +1,10 @@
-import Sidebar from './components/Sidebar/Sidebar';
+import Routes from './routes/routes';
 import { AppWrapper } from './App.styles';
 
 function App() {
   return (
     <AppWrapper>
-      <Sidebar />
-      <main>dasdasd</main>
+      <Routes />
     </AppWrapper>
   );
 }
