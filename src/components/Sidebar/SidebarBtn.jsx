@@ -3,7 +3,7 @@ import { SidebarItem } from './SidebarBtn.styles';
 
 const SidebarBtn = (props) => {
     return (
-        <SidebarItem>{props.children}</SidebarItem>
+        <SidebarItem active={props.active}>{props.children}</SidebarItem>
     );
 };
 

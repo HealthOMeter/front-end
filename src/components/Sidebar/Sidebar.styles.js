@@ -10,4 +10,8 @@ export const SideBar = styled.aside`
   flex-direction: column;
   align-items: center;
   padding-top: 3%;
+
+  & div:nth-child(2) {
+    margin-top: 23%;
+  }
 `;

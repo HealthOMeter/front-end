@@ -7,11 +7,13 @@ export const defaultItems = [
     {
         title: 'SIDEBAR.DASHBOARD',
         icon: dashboard,
+        url: '/dashboard',
         dropdownItems: [],
     },
     {
         title: 'SIDEBAR.DOCUMENTS',
         icon: documents,
+        url: '/documents',
         dropdownItems: [],
     },
     {
@@ -28,6 +30,7 @@ export const defaultItems = [
     {
         title: 'SIDEBAR.CALENDAR',
         icon: calendar,
+        url: '/calendar',
         dropdownItems: [],
     },
 ];
