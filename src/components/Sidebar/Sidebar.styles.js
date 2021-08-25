@@ -29,7 +29,7 @@ export const Wrapper = styled(Link)`
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s;
-    font-weight: 500;
+    font-weight: ${props => props.active ? 600 : 500};
     color: ${props => props.active ? '#2B4474' : '#515E72'};
     margin-left: 7px;
     &:hover {
