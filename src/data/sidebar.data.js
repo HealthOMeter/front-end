@@ -7,25 +7,25 @@ export const sidebarItems = [
     {
         title: 'Dashboard',
         icon: dashboardIcon,
-        url: '/dashboard',
+        url: '/app/dashboard',
         extra: false,
     },
     {
         title: 'Documents',
         icon: docsIcon,
-        url: '/documents',
+        url: '/app/documents',
         extra: false,
     },
     {
         title: 'Family',
         icon: familyIcon,
-        url: '/family',
+        url: '/app/family',
         extra: true,
     },
     {
         title: 'Calendar',
         icon: calendarIcon,
-        url: '/calendar',
+        url: '/app/calendar',
         extra: false,
     }
 ];
