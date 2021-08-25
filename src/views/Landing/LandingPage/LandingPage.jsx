@@ -2,7 +2,7 @@ import React from 'react';
 import PrimaryButton from '../../../components/PrimaryBtn/PrimaryButton';
 import bgrShape from '../../../assets/svg/bgrShape.svg';
 import { Header, Subheader } from '../../../styles/typography/headers.styles';
-import { IllustWrapper, PageWrapper } from './LandingPage.styles';
+import { PageWrapper } from './LandingPage.styles';
 
 const LandingPage = () => {
     return (
@@ -13,10 +13,7 @@ const LandingPage = () => {
                 <PrimaryButton>Sign up</PrimaryButton>
             </div>
             <div>
-                <IllustWrapper>
-                    <img src={bgrShape} />
-                    <div className="white-rect"></div>
-                </IllustWrapper>
+                <img src={bgrShape} />
             </div>
         </PageWrapper>
     );

@@ -18,10 +18,11 @@ export const Nav = styled.nav`
 `;
 
 export const NavItems = styled.div`
+    flex-grow: 0.05;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 16%;
+    width: auto;
     justify-content: space-between;
 `;
 
@@ -29,6 +30,7 @@ export const NavLink = styled(Link)`
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s;
+    margin: 0 10px;
     
     &:link,
     &:visited,

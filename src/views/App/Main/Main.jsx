@@ -5,10 +5,11 @@ import Calendar from '../Calendar/Calendar';
 import Dashboard from '../Dashboard/Dashboard';
 import Documents from '../Documents/Documents';
 import Family from '../Family/Family';
+import { MainWrapper } from './Main.styles';
 
 const Main = () => {
     return (
-        <>
+        <MainWrapper>
             <Sidebar />
             <Switch>
                 <Route path="/app/calendar" component={Calendar} />
@@ -16,7 +17,7 @@ const Main = () => {
                 <Route path="/app/documents" component={Documents} />
                 <Route path="/app/family" component={Family} />
             </Switch>
-        </>
+        </MainWrapper>
     );
 };
 

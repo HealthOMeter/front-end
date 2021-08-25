@@ -1,17 +1,17 @@
 export const navItems = [
     {
         title: 'About',
-        url: '/about',
+        url: '/app',
         isBtn: false,
     },
     {
         title: 'Log in',
-        url: '/login',
+        url: '/app',
         isBtn: false,
     },
     {
         title: 'Sign up',
-        url: '/signup',
+        url: '/app',
         isBtn: true,
     }
 ];
