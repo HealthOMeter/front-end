@@ -1,7 +1,19 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Navbar from '../../../components/Navbar/Navbar';
+import { HomeWrapper } from './Home.styles';
 
 const Home = () => {
-    return (<h1>Imagine that's a landing page! woohoo!</h1>)
+    return (
+        <HomeWrapper>
+            <Navbar />
+            <Switch>
+                <Route path="/about" />
+                <Route path="/login" />
+                <Route path="/signup" />
+            </Switch>
+        </HomeWrapper>
+    );
 };
 
 export default Home;
