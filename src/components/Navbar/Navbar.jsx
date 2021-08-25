@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { navItems } from '../../data/navbar.data';
 import Logo from '../Logo/Logo';
 import PrimaryButton from '../PrimaryBtn/PrimaryButton';

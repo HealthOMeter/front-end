@@ -13,7 +13,7 @@ const LandingPage = () => {
                 <PrimaryButton>Sign up</PrimaryButton>
             </div>
             <div>
-                <img src={bgrShape} />
+                <img alt="" src={bgrShape} />
             </div>
         </PageWrapper>
     );
