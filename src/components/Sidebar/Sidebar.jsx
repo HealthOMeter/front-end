@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { sidebarItems } from '../../data/sidebar.data';
 import Logo from '../Logo/Logo';
 import SidebarBtn from './SidebarBtn';
@@ -18,7 +18,7 @@ const Sidebar = () => {
             <Wrapper
               key={idx}
               to={item.url}
-              active={currentPath == item.url ? true : false}
+              active={currentPath === item.url ? true : false}
             >
               <SidebarBtn><img alt="" src={item.icon}></img><p>{item.title}</p></SidebarBtn>
             </Wrapper>
