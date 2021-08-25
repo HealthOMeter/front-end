@@ -1,18 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Logo  from '../Logo/Logo';
+import { Link, useLocation } from 'react-router-dom';
+import { sidebarItems } from '../../data/sidebar.data';
+import Logo from '../Logo/Logo';
 import SidebarBtn from './SidebarBtn';
-import icon1 from '../../assets/icons/dashboard.svg';
-import { SideBar } from './Sidebar.styles';
+import { SideBar, Wrapper } from './Sidebar.styles';
 
 const Sidebar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <SideBar>
       <Logo />
-      <SidebarBtn active={false}><Link to="/test"><img src={icon1}></img>Dashboard</Link></SidebarBtn>
-      <SidebarBtn active={true}><Link to="/test"><img src={icon1}></img>Documents</Link></SidebarBtn>
-      <SidebarBtn active={false}><Link to="/test"><img src={icon1}></img>Family</Link></SidebarBtn>
-      <SidebarBtn active={false}><Link to="/test"><img src={icon1}></img>Calendar</Link></SidebarBtn>
+      {
+        sidebarItems.map((item, idx) => {
+          return (
+            <Wrapper
+              key={idx}
+              to={item.url}
+              active={currentPath == item.url ? true : false}
+            >
+              <SidebarBtn><img alt="" src={item.icon}></img><p>{item.title}</p></SidebarBtn>
+            </Wrapper>
+          )
+        })
+      }
     </SideBar>
   );
 };
