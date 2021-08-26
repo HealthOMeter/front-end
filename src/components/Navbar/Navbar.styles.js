@@ -10,10 +10,16 @@ export const Nav = styled.nav`
     width: 100vw;
     padding: 2.4% 2%;
     box-sizing: border-box;
+    @media (min-width: 1400px) and (max-width: 1699px) {
+        padding: 2.4% 5%;
+    }
+    @media (min-width: 1700px) {
+        padding: 2.4% 12%;
+    }
 
     .logo {
-        width: 5%;
-        margin-top: 1%;
+        width: 6rem;
+        margin-top: 2rem;
     }
 `;
 
