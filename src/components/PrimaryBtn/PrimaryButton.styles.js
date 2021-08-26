@@ -15,7 +15,7 @@ export const PrimaryBtn = styled.button`
   color: ${txtColor};
   border: solid 1px transparent;
   transition: all 0.3s;
-  box-shadow: 0px 0px 50px rgba(255, 140, 174, 0.5);
+  box-shadow: ${(props) => (props.disabled ? 'none' : '0px 0px 50px rgba(255, 140, 174, 0.5)')};
   border-radius: 7px;
   &:hover {
     background-color: ${(props) => (props.disabled ? bgColorDis : bgColorHov)};

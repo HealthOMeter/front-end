@@ -20,3 +20,12 @@ export const Subheader = styled.h2`
     color: #252E2A;
     font-weight: 500;
 `;
+
+/* i.e. used for login title */
+export const Title = styled.h2`
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-weight: 600;
+    font-size: 30px;
+`;
