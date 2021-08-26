@@ -1,37 +1,31 @@
 # Healthometer
-Project for educational purposes
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=HealthOMeter_front-end)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
 
-## Getting Started with Create React App
+Project for educational purposes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sonarcloud stats
+
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=HealthOMeter_front-end&metric=ncloc)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=HealthOMeter_front-end&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=HealthOMeter_front-end&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=HealthOMeter_front-end&metric=sqale_index)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=HealthOMeter_front-end&metric=bugs)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=HealthOMeter_front-end&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=HealthOMeter_front-end)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+* `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
+* `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+* `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
