@@ -7,7 +7,7 @@ export const navItems = [
     },
     {
         title: 'Log in',
-        url: '/app',
+        url: '/login',
         isBtn: false,
         visibleOn: ['/', '/signup']
     },
