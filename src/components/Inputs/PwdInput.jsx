@@ -5,7 +5,7 @@ import { Text } from './Inputs.styles';
 const PwdInput = (props) => {
     return (
         <InputLabel>{props.label}
-            <Text type="password" placeholder={props.placeholder}>
+            <Text onChange={props.onInputChange} type="password" placeholder={props.placeholder}>
             </Text>
         </InputLabel>
     );
