@@ -11,6 +11,6 @@ export const signIn = async (email, password) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(error.code, error.message);
+            console.log(errorCode, errorMessage);
         });
 }
