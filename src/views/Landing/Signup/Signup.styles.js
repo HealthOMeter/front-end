@@ -17,7 +17,7 @@ export const PageWrapper = styled.div`
     }
 `;
 
-export const LoginSection = styled.section`
+export const SignupSection = styled.section`
     background: #fff;
     order: 2;
     width: 50%;

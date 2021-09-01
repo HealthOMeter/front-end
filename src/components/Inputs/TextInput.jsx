@@ -5,7 +5,7 @@ import { Text } from './Inputs.styles';
 const TextInput = (props) => {
     return (
         <InputLabel>{props.label}
-            <Text onChange={props.onInputChange} type="text" placeholder={props.placeholder}>
+            <Text onChange={props.onInputChange} type={props.type} placeholder={props.placeholder}>
             </Text>
         </InputLabel>
     );

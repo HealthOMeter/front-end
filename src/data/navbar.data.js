@@ -13,7 +13,7 @@ export const navItems = [
     },
     {
         title: 'Sign up',
-        url: '/app',
+        url: '/signup',
         isBtn: true,
         visibleOn: ['/', '/login']
     }
