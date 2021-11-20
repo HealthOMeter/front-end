@@ -1,4 +1,4 @@
-import { SearchWrapper, Text, SearchIcon } from './Inputs.styles';
+import { Text } from './Inputs.styles';
 
 const SearchInput = () => {
     return (
