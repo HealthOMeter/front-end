@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { signIn } from '../../../api/auth.api';
 import TextInput from '../../../components/Inputs/TextInput';
 import PwdInput from '../../../components/Inputs/PwdInput';
 import PrimaryButton from '../../../components/PrimaryBtn/PrimaryButton';
@@ -32,7 +31,7 @@ const Login = () => {
                     <TextInput onInputChange={(e) => setEmailInput(e.target.value)} label="Email" type="email" placeholder="youremail@example.com" />
                     <PwdInput onInputChange={(e) => setPassword(e.target.value)} label="Password" />
                     <label><input type="checkbox"></input>Keep me logged in</label>
-                    <PrimaryButton event={() => signIn(emailInput, password)} disabled={isBtnDisabled}>Log in</PrimaryButton>
+                    <PrimaryButton event={console.log("hello")} disabled={isBtnDisabled}>Log in</PrimaryButton>
                     <p>First time? <Link to="signup">Sign up here</Link></p>
                 </InputsWrapper>
             </LoginSection>
