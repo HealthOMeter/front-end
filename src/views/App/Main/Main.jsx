@@ -2,6 +2,7 @@ import React from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
 import { useLocation } from 'react-router-dom';
 import Sidebar from '../../../components/Sidebar/Sidebar';
+import Topbar from '../../../components/Topbar/Topbar';
 import { MainWrapper } from './Main.styles';
 import { elements } from '../dashboard.data';
 import Topbar from '../../../components/Topbar/Topbar';
@@ -12,6 +13,7 @@ const Main = () => {
 
     return (
         <MainWrapper>
+            <Redirect to="/app/dashboard" />
             <Sidebar />
             {
                 elements.map((el) => {
