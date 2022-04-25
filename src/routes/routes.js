@@ -17,10 +17,10 @@ const Routes = () => {
             <Route path="/about" component={LandingPage} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/app/calendar" component={Calendar} />
-            <Route path="/app/dashboard" component={Dashboard} />
-            <Route path="/app/documents" component={Documents} />
-            <Route path="/app/family" component={Family} />
+            <Route path="/app/calendar" component={Main} />
+            <Route path="/app/dashboard" component={Main} />
+            <Route path="/app/documents" component={Main} />
+            <Route path="/app/family" component={Main} />
         </Switch>
     );
 };
