@@ -1,7 +1,7 @@
 export const navItems = [
     {
         title: 'About',
-        url: '/app',
+        url: '/app/dashboard',
         isBtn: false,
         visibleOn: ['/', '/signup', '/login']
     },

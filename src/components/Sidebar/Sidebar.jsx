@@ -18,7 +18,7 @@ const Sidebar = () => {
             <Wrapper
               key={idx}
               to={item.url}
-              active={currentPath === item.url ? true : false}
+              activeLink={currentPath === item.url ? true : false}
             >
               <SidebarBtn><img alt="" src={item.icon}></img><p>{item.title}</p></SidebarBtn>
             </Wrapper>

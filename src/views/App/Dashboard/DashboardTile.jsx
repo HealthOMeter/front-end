@@ -1,9 +1,11 @@
 import { DashboardBox } from './Dashboard.styles';
+import { H4 } from '../../../styles/typography/headers.styles';
 
-const DashboardTile = ({ title }) => {
+const DashboardTile = ({ title, icon, children }) => {
     return (
         <DashboardBox>
-            <h2>{title}</h2>
+            <H4><img src={icon} alt="icon"/> {title}</H4>
+            {children}
         </DashboardBox>
     );
 };

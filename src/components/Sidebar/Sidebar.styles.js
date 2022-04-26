@@ -20,20 +20,20 @@ export const SideBar = styled.aside`
   }
 `;
 
-export const Wrapper = styled(Link)`
+export const Wrapper = styled(({ activeLink, ...props }) => <Link {...props} />)`
     width: 93.5%;
     height: 8%;
     margin-left: 3%;
     border: solid 1px transparent;
     border-radius: 7px;
-    background: ${props => props.active ? bgActiveColor : bgColor};
+    background: ${props => props.activeLink ? bgActiveColor : bgColor};
     align-self: flex-start;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s;
-    font-weight: ${props => props.active ? 600 : 500};
-    color: ${props => props.active ? '#2B4474' : '#515E72'};
+    font-weight: ${props => props.activeLink ? 600 : 500};
+    color: ${props => props.activeLink ? '#2B4474' : '#515E72'};
     &:hover {
       background-color: rgba(223, 229, 241, 0.5);
       border-radius: 7px;
