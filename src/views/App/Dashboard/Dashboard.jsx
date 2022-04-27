@@ -27,6 +27,7 @@ const Dashboard = () => {
             setTakenSpace(res.takenSpace);
             setDocs(res.documents);
             setFamily(res.family);
+            localStorage.setItem("name", res.userName);
         });
 
     }, []);

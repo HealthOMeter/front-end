@@ -1,16 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { NoContentTxt } from "../../../styles/typography/text.styles";
+import { NoContentTxtWrapper } from "./Dashboard.styles";
 
 const Visits = ({ visits }) => {
-    console.log(visits);
     return (
         <>
             {
-                visits.length == 0
+                visits.length === 0
                     ?
-                    <>
-                        <p>You don't have any regular visits yet</p>
-                        <a>Create a visit</a>
-                    </>
+                    <NoContentTxtWrapper>
+                        <NoContentTxt>You don't have any regular visits yet</NoContentTxt>
+                        <Link to="/create">Create a visit</Link>
+                    </NoContentTxtWrapper>
                     :
                     "ok"
             }

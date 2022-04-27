@@ -50,6 +50,6 @@ export const H4 = styled.h4`
     margin: 0;
     padding: 0;
     color: #000;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 17.5px;
 `;
