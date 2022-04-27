@@ -69,7 +69,7 @@ export const DocumentRow = styled.div`
     display: grid;
     grid-template-columns: 2% 23% 42% 41%;
     align-items: center;
-    background-color: ${props => props.darkBgr ? '#FBFBFB' : '#000000'};
+    background-color: ${props => props.darkBgr ? '#FBFBFB' : '#fff'};
     height: 50px;
     padding: 0.2rem .5rem;
     border-radius: 7px;

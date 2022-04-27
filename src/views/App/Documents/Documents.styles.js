@@ -63,7 +63,7 @@ export const DocumentsBox = styled.div`
     font-weight: 300;
   }
 
-  & div:nth-child(2) {
+  & div:nth-child(2):not(.document) {
     height: 41px;
     border-radius: 7px;
     border: solid 1px #ECECEC;
@@ -71,7 +71,7 @@ export const DocumentsBox = styled.div`
     width: fit-content;
   }
 
-  & div:nth-child(2) input {
+  & div:nth-child(2):not(.document) input {
     border-style: none;
   }
 
@@ -99,9 +99,40 @@ export const FilesTable = styled.div`
   overflow-y: hidden;
   border: 0.5px solid #EBF0F8;
   border-radius: 0px 0px 7px 7px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const DocumentRow = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3% 4% 26% 27% 26% 14%;
+  height: 45px;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-bottom: 0.5px solid #EBF0F8;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    border: 0.5px solid #EBF0F8;
+    box-shadow: 0px 0px 20px rgba(223, 229, 241, 0.58);
+  }
+
+  & p {
+    font-size: 14px;
+  }
+
+  & .name {
+    padding-left: 1rem;
+  }
+
+  & .status {
+    color: #64748B;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  & .format {
+    text-transform: uppercase;
+  }
 `;
