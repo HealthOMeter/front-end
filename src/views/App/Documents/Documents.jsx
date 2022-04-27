@@ -1,7 +1,109 @@
-import React from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
+import { getCategories } from '../../../api/categories.api';
+import { 
+    DocumentsWrapper,
+    Categories,
+    CategoryBtn,
+    DocumentsBox,
+    FilesListHead,
+    FilesListTitle,
+    FilesTable,
+    DocumentRow
+} from './Documents.styles';
+import editIcon from "../../../assets/svg/editCat.svg";
+import separator from "../../../assets/svg/separator.svg";
+import { H4 } from '../../../styles/typography/headers.styles';
+import SearchInput from "../../../components/Inputs/SearchInput";
+import { NoContentTxt } from "../../../styles/typography/text.styles";
+import { getFiles } from '../../../api/files.api';
 
 const Documents = () => {
-    return ( <h1>Your docs should be here!</h1>);
+
+    const [docs, setDocs] = useState([]);
+
+    useEffect(()=> {
+        const userId = '62612dc93256987d5db8b1b8';
+        getFiles(userId)
+        .then((res)=> {
+            if (res !== undefined && res.length > 0) {
+                setDocs(res)
+            } else {
+                setDocs([]);
+            };
+        })
+    }, []);
+
+    const [activeCategory, setActiveCategory] = useState("");
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        getCategories('62612dc93256987d5db8b1b8')
+            .then((res) => {
+                if (res !== undefined && res?.length > 0) {
+                    setCategories(res);
+                } else {
+                    setCategories([]);
+                };
+            })
+    }, []);
+    return (
+        <DocumentsWrapper>
+            <Categories>
+                {
+                    categories.length > 0
+                    &&
+                    categories.map((el) => {
+                        const isActive = el === activeCategory;
+                        return <Fragment key={el}>
+                            <CategoryBtn
+                                onClick={() => setActiveCategory(el)}
+                                className={isActive ? "active" : null}
+                                active={isActive}
+                                key={el}
+                            >
+                            {el}
+                            {isActive && <img className="edit-icon" src={editIcon} alt="Edit category" />}
+                        </CategoryBtn>
+                        <img src={separator} /></Fragment>
+
+                    })
+                }
+                <CategoryBtn active>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5" stroke="#264071" strokeWidth="2" />
+                    </svg>
+                </CategoryBtn>
+            </Categories>
+            <DocumentsBox>
+                <H4>My files</H4>
+                <SearchInput placeholder="Search by name or date" />
+                <FilesListHead>
+                    <FilesListTitle>Name</FilesListTitle>
+                    <FilesListTitle>Date</FilesListTitle>
+                    <FilesListTitle>Status</FilesListTitle>
+                    <FilesListTitle>Format</FilesListTitle>
+                </FilesListHead>
+                <FilesTable>
+                    {
+                        docs.length == 0
+                        ?
+                        <NoContentTxt>
+                            Add your first file {`${activeCategory.length > 0 ? "in " + activeCategory : null}`}
+                        </NoContentTxt>
+                        :
+                        docs.map((el)=> {
+                            return <DocumentRow>
+                            <p>{el.name}</p>
+                            <p>{el.date}</p>
+                            <p>{el.status}</p>
+                            <p>{el.format}</p>
+                            </DocumentRow>
+                        })
+                    }
+                </FilesTable>
+            </DocumentsBox>
+        </DocumentsWrapper>
+    );
 }
 
 export default Documents;
