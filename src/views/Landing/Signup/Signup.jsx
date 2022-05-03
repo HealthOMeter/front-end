@@ -91,7 +91,7 @@ const Signup = () => {
                                 <span><CheckIcon state={pwdHasNumber} />At least 1 number</span>
                                 <label><input type="checkbox"></input>By signing up, I agree to the Privacy Policy</label>
                                 <label><input type="checkbox"></input>By signing up, I agree to the Terms and Conditions</label>
-                                <PrimaryButton event={handleClick} disabled={isBtnDisabled}>Sign up</PrimaryButton>
+                                <PrimaryButton wide event={handleClick} disabled={isBtnDisabled}>Sign up</PrimaryButton>
                                 <p>Already have an account? <Link to="/login">Log in here</Link></p>
                             </>
                     }

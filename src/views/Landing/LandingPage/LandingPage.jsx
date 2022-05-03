@@ -10,7 +10,7 @@ const LandingPage = () => {
             <div className="header-wrapper">
                 <Header>Keep your medical <p>files organized</p></Header>
                 <Subheader>Never lose or misplace your medical documents again by <p>putting them in custom categories in easily accessible web</p> application!</Subheader>
-                <PrimaryButton>Sign up</PrimaryButton>
+                <PrimaryButton wide>Sign up</PrimaryButton>
             </div>
             <div className="illustration-wrapper">
                 <img alt="" src={bgrShape} />

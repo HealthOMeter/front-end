@@ -62,19 +62,6 @@ export const DocumentsBox = styled.div`
   & h4 {
     font-weight: 300;
   }
-
-  & div:nth-child(2):not(.document) {
-    height: 41px;
-    border-radius: 7px;
-    border: solid 1px #ECECEC;
-    border-width: 1px;
-    width: fit-content;
-  }
-
-  & div:nth-child(2):not(.document) input {
-    border-style: none;
-  }
-
 `;
 
 export const FilesListHead = styled.div`
@@ -134,5 +121,32 @@ export const DocumentRow = styled.div`
 
   & .format {
     text-transform: uppercase;
+  }
+`;
+
+export const Toolbar = styled.div`
+  display: grid;
+  grid-template-columns: 73.5% 16% 10.5%;
+  row-gap: 1rem;
+  padding: 3px 0 22px 0;
+
+  & button {
+    column-gap: 0.4rem;
+    font-size: 14px;
+  }
+
+  & div:nth-child(1) {
+    height: 41px;
+    border-radius: 7px;
+    border: solid 1px #ECECEC;
+    border-width: 1px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  & div:nth-child(1) input {
+    border-style: none;
   }
 `;

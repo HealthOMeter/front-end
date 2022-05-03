@@ -13,7 +13,7 @@ import Documents from "./Documents";
 
 const Dashboard = () => {
 
-    const USER_ID = "62612dc93256987d5db8b1b8";
+    const USER_ID = "626696f9b03b65dc75bdfe82";
 
     const [visits, setVisits] = useState([]);
     const [takenSpace, setTakenSpace] = useState(null);

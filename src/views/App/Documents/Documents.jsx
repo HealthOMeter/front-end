@@ -8,7 +8,8 @@ import {
     FilesListHead,
     FilesListTitle,
     FilesTable,
-    DocumentRow
+    DocumentRow,
+    Toolbar
 } from './Documents.styles';
 import editIcon from "../../../assets/svg/editCat.svg";
 import separator from "../../../assets/svg/separator.svg";
@@ -32,7 +33,7 @@ const Documents = () => {
     };
 
     useEffect(() => {
-        const userId = '62612dc93256987d5db8b1b8';
+        const userId = '626696f9b03b65dc75bdfe82';
         getFiles(userId)
             .then((res) => {
                 if (res !== undefined && res.length > 0) {
@@ -44,7 +45,7 @@ const Documents = () => {
     }, []);
 
     useEffect(() => {
-        getCategories('62612dc93256987d5db8b1b8')
+        getCategories('626696f9b03b65dc75bdfe82')
             .then((res) => {
                 if (res !== undefined && res?.length > 0) {
                     setCategories(res);
@@ -83,9 +84,15 @@ const Documents = () => {
             </Categories>
             <DocumentsBox>
                 <H4>My files</H4>
-                <SearchInput placeholder="Search by name or date" />
-                <FilterDropdown elements={elements} />
-                <PrimaryButton>Add file</PrimaryButton>
+                <Toolbar className="documents-toolbox">
+                    <SearchInput placeholder="Search by name or date" />
+                    <FilterDropdown elements={elements} />
+                    <PrimaryButton>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5" stroke="#fff" strokeWidth="2" />
+                        </svg>Add file
+                    </PrimaryButton>
+                </Toolbar>
                 <FilesListHead>
                     <FilesListTitle>Name</FilesListTitle>
                     <FilesListTitle>Date</FilesListTitle>
@@ -97,7 +104,7 @@ const Documents = () => {
                         docs.length == 0
                             ?
                             <NoContentTxt>
-                                Add your first file {`${activeCategory.length > 0 ? "in " + activeCategory : null}`}
+                                Add your first file {`${activeCategory.length > 0 ? "in " + activeCategory : ""}`}
                             </NoContentTxt>
                             :
                             docs.map((el) => {

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Text = styled.input`
-  font-family: "Poppins";
-  border: 1px solid #d2d9e6;
-  box-sizing: border-box;
-  border-radius: 11px;
-  height: inherit;
-  color: #7b89a7;
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: 500;
-  padding-left: 47px;
+    font-family: 'Poppins';
+    border: 1px solid #D2D9E6;
+    box-sizing: border-box;
+    border-radius: 11px;
+    height: 50px;
+    color: #7B89A7;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    padding-left: 47px;
 `;
 
 export const SearchInputWrapper = styled.div`
@@ -23,6 +23,10 @@ export const SearchInputWrapper = styled.div`
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
+  }
+
+  & input {
+    height: 34px;
   }
 `;
 

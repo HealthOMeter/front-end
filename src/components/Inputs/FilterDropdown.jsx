@@ -8,7 +8,7 @@ const FilterDropdown = ({ elements }) => {
             <select>
                 {
                     elements.map((el) => {
-                        return <option>{el}</option>
+                        return <option key={el}>{el}</option>
                     })
                 }
             </select>

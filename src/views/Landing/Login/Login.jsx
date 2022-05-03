@@ -31,7 +31,7 @@ const Login = () => {
                     <TextInput onInputChange={(e) => setEmailInput(e.target.value)} label="Email" type="email" placeholder="youremail@example.com" />
                     <PwdInput onInputChange={(e) => setPassword(e.target.value)} label="Password" />
                     <label><input type="checkbox"></input>Keep me logged in</label>
-                    <PrimaryButton event={console.log("hello")} disabled={isBtnDisabled}>Log in</PrimaryButton>
+                    <PrimaryButton wide event={console.log("hello")} disabled={isBtnDisabled}>Log in</PrimaryButton>
                     <p>First time? <Link to="signup">Sign up here</Link></p>
                 </InputsWrapper>
             </LoginSection>

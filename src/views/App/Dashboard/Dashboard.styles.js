@@ -53,7 +53,7 @@ export const FreeSpaceBar = styled.div`
 
 export const DocumentsTableHead = styled.div`
     display: grid;
-    grid-template-columns: 30% 33% 46%;
+    grid-template-columns: 34% 30% 37%;
     border-bottom: solid 1px #B2B2B2;
     padding-bottom: 0.3rem;
     text-align: center;
@@ -67,7 +67,7 @@ export const DocumentsTableHead = styled.div`
 
 export const DocumentRow = styled.div`
     display: grid;
-    grid-template-columns: 2% 23% 42% 41%;
+    grid-template-columns: 7% 23% 38% 33%;
     align-items: center;
     background-color: ${props => props.darkBgr ? '#FBFBFB' : '#fff'};
     height: 50px;
