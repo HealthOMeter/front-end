@@ -21,12 +21,14 @@ import favIcon from "../../../assets/svg/fav.svg";
 import FilterDropdown from '../../../components/Inputs/FilterDropdown';
 import { elements } from "./dropdown.data";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
+import AddFile from './AddFile';
 
 const Documents = () => {
 
     const [docs, setDocs] = useState([]);
     const [activeCategory, setActiveCategory] = useState("");
     const [categories, setCategories] = useState([]);
+    const [toggleAddFile, setToggleAddFile] = useState(false);
 
     if (categories.length > 0 && activeCategory === "") {
         setActiveCategory(categories[0]);
@@ -56,6 +58,7 @@ const Documents = () => {
     }, []);
     return (
         <DocumentsWrapper>
+            {toggleAddFile && <AddFile setToggler={setToggleAddFile}/>}
             <Categories>
                 {
                     categories.length > 0
@@ -87,7 +90,7 @@ const Documents = () => {
                 <Toolbar className="documents-toolbox">
                     <SearchInput placeholder="Search by name or date" />
                     <FilterDropdown elements={elements} />
-                    <PrimaryButton>
+                    <PrimaryButton event={() => setToggleAddFile(true)}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5" stroke="#fff" strokeWidth="2" />
                         </svg>Add file
