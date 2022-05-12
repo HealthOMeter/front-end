@@ -5,7 +5,7 @@ import { FreeSpaceBarWrapper, FreeSpaceBar, NoContentTxtWrapper } from "./Dashbo
 const FreeSpace = ({ takenSpace })=> {
     const TOTAL_SPACE = 3;
     const takenSpaceGB = kbToGb(takenSpace).toFixed(2);
-    const freeSpace = 2 - takenSpaceGB;
+    const freeSpace = TOTAL_SPACE - takenSpaceGB;
     const takenSpacePercent = takenSpaceGB/TOTAL_SPACE * 100;
     return (
         <NoContentTxtWrapper>

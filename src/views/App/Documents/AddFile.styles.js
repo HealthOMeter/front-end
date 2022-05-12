@@ -28,7 +28,7 @@ export const AddFileWindow = styled.div`
   transform: translateX(-50%);
   padding: 30px;
   display: grid;
-  grid-template-rows: 12% 14% 75%;
+  grid-template-rows: 12% 14% 62% 14%;
   align-items: start;
 
   & div.header {
@@ -38,7 +38,16 @@ export const AddFileWindow = styled.div`
 
       & img.close-icon {
         width: 16px;
+        cursor: pointer;
       }
+  }
+
+  & div.bottom-btns {
+    display: flex;
+    flex-direction row;
+    column-gap: 0.8rem;
+    align-self: end;
+    justify-content: end;
   }
 `;
 
@@ -95,6 +104,47 @@ export const StepBall = styled.div`
 `;
 
 export const StepName = styled(SmallP)`
-  color: ${(props)=> props.done ? "#0041A4" : "#D7D7D7"};
+  color: ${(props) => (props.done ? "#0041A4" : "#D7D7D7")};
   text-transform: capitalize;
+`;
+
+export const FileWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 12% 84% 6%;
+  align-items: center;
+
+  & p.file-size-txt {
+    color: #7b7b7b;
+  }
+
+  & p.file-name-txt {
+    color: #484848;
+  }
+
+  & svg.remove-file-icon {
+    cursor: pointer;
+  }
+`;
+
+export const AddFileForm = styled.form`
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 1rem;
+
+  & label {
+    color: #515e72;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  & input,
+  & select {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  & input::placeholder {
+    color: #d7d7d7;
+  }
 `;

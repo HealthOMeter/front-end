@@ -1,4 +1,4 @@
-import { fetchData } from "./base.api";
+import axios from "axios";
 
 export const createUser = (name, email, password)=> {
     const payload = {
@@ -7,5 +7,5 @@ export const createUser = (name, email, password)=> {
         "password": password,
     };
 
-    return fetchData('api/Users', 'POST', payload);
+    return axios.post('api/Users', 'POST', payload);
 };

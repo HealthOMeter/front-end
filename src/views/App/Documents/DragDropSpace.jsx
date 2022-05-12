@@ -4,8 +4,10 @@ import uploadIcon from "../../../assets/svg/uploadFile.svg";
 import { NoContentTxt, SmallP } from "../../../styles/typography/text.styles";
 
 const DragDropSpace = () => {
+
     return (
-        <DragDropWrapper>
+        <DragDropWrapper htmlFor="file">
+            <input name="file" type="file" id="file" />
             <img src={uploadIcon} alt="Upload file" />
             <div>
                 <NoContentTxt>Drag and drop here</NoContentTxt>

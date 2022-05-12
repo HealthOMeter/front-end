@@ -35,8 +35,7 @@ const Documents = () => {
     };
 
     useEffect(() => {
-        const userId = '626696f9b03b65dc75bdfe82';
-        getFiles(userId)
+        getFiles(process.env.REACT_APP_TEST_USER)
             .then((res) => {
                 if (res !== undefined && res.length > 0) {
                     setDocs(res)
@@ -47,7 +46,7 @@ const Documents = () => {
     }, []);
 
     useEffect(() => {
-        getCategories('626696f9b03b65dc75bdfe82')
+        getCategories(process.env.REACT_APP_TEST_USER)
             .then((res) => {
                 if (res !== undefined && res?.length > 0) {
                     setCategories(res);
@@ -56,9 +55,10 @@ const Documents = () => {
                 };
             })
     }, []);
+    
     return (
         <DocumentsWrapper>
-            {toggleAddFile && <AddFile setToggler={setToggleAddFile}/>}
+            {toggleAddFile && <AddFile closeAddFile={setToggleAddFile} />}
             <Categories>
                 {
                     categories.length > 0

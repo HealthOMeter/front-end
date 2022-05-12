@@ -4,7 +4,6 @@ import placeholder from "../../../assets/svg/jpgIcon.svg";
 import { NoContentTxt } from "../../../styles/typography/text.styles";
 
 const Documents = ({ docs }) => {
-    console.log(docs);
     return (
         <>
             {

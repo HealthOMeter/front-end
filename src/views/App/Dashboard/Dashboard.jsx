@@ -13,21 +13,20 @@ import Documents from "./Documents";
 
 const Dashboard = () => {
 
-    const USER_ID = "626696f9b03b65dc75bdfe82";
-
     const [visits, setVisits] = useState([]);
     const [takenSpace, setTakenSpace] = useState(null);
     const [docs, setDocs] = useState([]);
     const [family, setFamily] = useState([]);
 
-    useEffect(()=> {
-        getDashboard(USER_ID)
+    useEffect(async ()=> {
+        await getDashboard(process.env.REACT_APP_TEST_USER)
         .then((res)=> {
-            setVisits(res.regularVisits);
-            setTakenSpace(res.takenSpace);
-            setDocs(res.documents);
-            setFamily(res.family);
-            localStorage.setItem("name", res.userName);
+            const data = res.data;
+            setVisits(data.regularVisits);
+            setTakenSpace(data.takenSpace);
+            setDocs(data.documents);
+            setFamily(data.family);
+            localStorage.setItem("name", data.userName);
         });
 
     }, []);

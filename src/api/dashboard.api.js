@@ -1,5 +1,5 @@
-import { fetchData } from "./base.api";
+import axios from "axios";
 
 export const getDashboard = (userId) => {
-    return fetchData(`http://localhost:3000/api/Dashboard/${userId}`, 'GET');
+    return axios.get(`http://localhost:3000/api/Dashboard/${userId}`);
 };

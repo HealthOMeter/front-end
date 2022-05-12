@@ -8,6 +8,7 @@ const PrimaryButton = (props) => {
       className="primary-btn"
       onClick={props.event}
       disabled={props.disabled}
+      type={props.type}
     >
       {props.children}
     </PrimaryBtn>
