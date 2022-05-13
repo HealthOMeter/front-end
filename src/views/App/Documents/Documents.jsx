@@ -37,8 +37,9 @@ const Documents = () => {
     useEffect(() => {
         getFiles(process.env.REACT_APP_TEST_USER)
             .then((res) => {
-                if (res !== undefined && res.length > 0) {
-                    setDocs(res)
+                const data = res.data;
+                if (data !== undefined && data.length > 0) {
+                    setDocs(data);
                 } else {
                     setDocs([]);
                 };
@@ -48,8 +49,9 @@ const Documents = () => {
     useEffect(() => {
         getCategories(process.env.REACT_APP_TEST_USER)
             .then((res) => {
-                if (res !== undefined && res?.length > 0) {
-                    setCategories(res);
+                const data = res.data;
+                if (data !== undefined && data?.length > 0) {
+                    setCategories(data);
                 } else {
                     setCategories([]);
                 };
@@ -111,7 +113,7 @@ const Documents = () => {
                             </NoContentTxt>
                             :
                             docs.map((el) => {
-                                return <DocumentRow className="document" key={el.id}>
+                                return <DocumentRow id={el.id} className="document" key={el.id}>
                                     <img src={favIcon} alt="Favorite" />
                                     <input type="checkbox" />
                                     <p className="name">{el.name}</p>

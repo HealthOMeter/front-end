@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Subheader } from "../../../styles/typography/headers.styles";
 import { AddFileWindow, BgrOverlay } from "./AddFile.styles";
 import StepsBar from "./StepsBar";
@@ -6,9 +6,10 @@ import closeIcon from "../../../assets/icons/close.svg";
 import { steps } from "./steps.data";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryBtn/SecondaryBtn";
-import { uploadFile } from "../../../api/files.api";
+import { sendFileInfo, uploadFile } from "../../../api/files.api";
 
 const AddFile = ({ closeAddFile }) => {
+    const userId = process.env.REACT_APP_TEST_USER
 
     const savedStep = localStorage.getItem("addFileStep");
     savedStep ?? localStorage.setItem("addFileStep", 1);
@@ -16,14 +17,24 @@ const AddFile = ({ closeAddFile }) => {
     const [currentStep, setCurrentStep] = useState(localStorage.getItem("addFileStep"));
     const [files, setFiles] = useState({});
     const [form, setForm] = useState({
-        id: "",
+        id: `${userId}`,
         name: "",
         date: "",
         status: null,
-        category: "",
-        format: "",
-        path: ""
+        category: ""
     });
+
+    useEffect(() => {
+        const formValues = Object.values(form);
+        const condition = formValues.includes("") || formValues.includes(undefined) || formValues.includes(null);
+        if (condition) {
+            return;
+        } else {
+            sendFileInfo(form, userId)
+                .then((res) => console.log(res));
+        };
+
+    }, [form]);
 
     const closeWindowHandler = () => {
         closeAddFile(false);
@@ -51,10 +62,12 @@ const AddFile = ({ closeAddFile }) => {
             const userId = process.env.REACT_APP_TEST_USER
             console.log(form);
             const formData = new FormData();
-            // FIX THIS : FORM DATA?
             formData.append("FileContent", files[0]);
             uploadFile(formData, userId)
-                .then((res) => console.log(res));
+                .then((res) => {
+                    const data = res.data.response;
+                    setForm({ ...form, format: data.format, path: data.path });
+                });
         };
     };
 

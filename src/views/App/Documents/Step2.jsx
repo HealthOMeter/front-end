@@ -11,8 +11,9 @@ const Step2 = ({ setForm, form }) => {
     useEffect(() => {
         getCategories(process.env.REACT_APP_TEST_USER)
             .then((res) => {
-                if (res !== undefined && res?.length > 0) {
-                    setCategories(res);
+                const data = res.data;
+                if (data !== undefined && data?.length > 0) {
+                    setCategories(data);
                 } else {
                     setCategories([]);
                 };
@@ -56,7 +57,7 @@ const Step2 = ({ setForm, form }) => {
             <InputLabel>
                 Result
                 <InputDropdown
-                    onChange={(e) => setForm({ ...form, "status": e.target.value })}
+                    onChange={(e) => setForm({ ...form, "status": Number(e.target.value) })}
                     name="status"
                 >
                     <option value="0">Normal</option>
