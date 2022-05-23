@@ -1,7 +1,7 @@
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Documents from "./Documents/Documents.jsx";
 import Family from "./Family/Family.jsx";
-import Calendar from "./Calendar/Calendar.jsx";
+import { default as Calendar } from "./Calendar/CalendarSection.jsx";
 
 export const elements = [
   {

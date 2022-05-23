@@ -46,7 +46,11 @@ const CreateCategory = ({ closeModal }) => {
         </datalist>
       </AddFileForm>
       <div className="bottom-btns">
-        <PrimaryButton event={handleCreateCategory}>Create</PrimaryButton>
+        <PrimaryButton
+            disabled={category === false}
+            event={handleCreateCategory}>
+                Create
+        </PrimaryButton>
       </div>
     </Modal>
   );
