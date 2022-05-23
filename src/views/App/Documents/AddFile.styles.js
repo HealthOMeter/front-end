@@ -1,3 +1,4 @@
+import { steps } from "./steps.data";
 import styled from "styled-components";
 import { SmallP } from "../../../styles/typography/text.styles";
 
@@ -23,7 +24,7 @@ export const AddFileWindow = styled.div`
   top: 10%;
   z-index: 5;
   width: 40%;
-  height: 80%;
+  height: ${props => props.currentStep === steps.length ? "fit-content" : "80%"};
   left: 50%;
   transform: translateX(-50%);
   padding: 30px;

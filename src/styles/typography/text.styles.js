@@ -22,3 +22,11 @@ export const TinyP = styled.p`
   font-size: 10px;
   font-weight: 500;
 `;
+
+export const Underlined = styled.p`
+  color: #0041A4;
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: underline;
+  cursor: pointer;
+`;

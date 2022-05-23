@@ -150,3 +150,20 @@ export const Toolbar = styled.div`
     border-style: none;
   }
 `;
+
+export const SuccessBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+  justify-content: center;
+  align-content: center;
+
+  & div {
+    text-align: center;
+
+    p {
+      color: #515E72;
+    }
+  }
+`;

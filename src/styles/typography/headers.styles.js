@@ -29,6 +29,13 @@ export const H1 = styled.h1`
     }
 `;
 
+export const H2 = styled.h2`
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif,
+    font-size: 27.34px;
+    line-height: 41.01px;
+`;
+
 export const Subheader = styled.h2`
     font-size: 21.88px;
     line-height: 140%;
