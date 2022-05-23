@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Subheader } from "../../../styles/typography/headers.styles";
-import { AddFileWindow, BgrOverlay } from "./AddFile.styles";
 import StepsBar from "./StepsBar";
 import closeIcon from "../../../assets/icons/close.svg";
 import { steps } from "./steps.data";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryBtn/SecondaryBtn";
 import { sendFileInfo, uploadFile } from "../../../api/files.api";
+import Modal from "../../../components/Modal/Modal";
 
 const AddFile = ({ closeAddFile }) => {
   const userId = process.env.REACT_APP_TEST_USER;
@@ -77,9 +77,7 @@ const AddFile = ({ closeAddFile }) => {
   };
 
   return (
-    <>
-      <BgrOverlay />
-      <AddFileWindow currentStep={parseInt(currentStep)}>
+      <Modal currentStep={parseInt(currentStep)}>
         <div className="header">
           {parseInt(currentStep) !== steps.length && (
             <>
@@ -118,8 +116,7 @@ const AddFile = ({ closeAddFile }) => {
             <PrimaryButton event={nextStepHandler}>Next</PrimaryButton>
           </div>
         )}
-      </AddFileWindow>
-    </>
+      </Modal>
   );
 };
 

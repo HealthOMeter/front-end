@@ -11,6 +11,12 @@ export const Text = styled.input`
     line-height: 18px;
     font-weight: 500;
     padding-left: 47px;
+    
+    &:focus-visible {
+      outline: 1px solid #B8CFF9;
+      filter: drop-shadow(0px 0px 5px #A0BEF3);
+      border-radius: 2px;
+    }
 `;
 
 export const SearchInputWrapper = styled.div`

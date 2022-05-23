@@ -22,6 +22,7 @@ import FilterDropdown from '../../../components/Inputs/FilterDropdown';
 import { elements } from "./dropdown.data";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
 import AddFile from './AddFile';
+import CreateCategory from './CreateCategory';
 
 const Documents = () => {
 
@@ -29,6 +30,7 @@ const Documents = () => {
     const [activeCategory, setActiveCategory] = useState("");
     const [categories, setCategories] = useState([]);
     const [toggleAddFile, setToggleAddFile] = useState(false);
+    const [toggleCategoryModal, setToggleCategoryModal] = useState(false);
 
     if (categories.length > 0 && activeCategory === "") {
         setActiveCategory(categories[0]);
@@ -61,6 +63,7 @@ const Documents = () => {
     return (
         <DocumentsWrapper>
             {toggleAddFile && <AddFile closeAddFile={setToggleAddFile} />}
+            {toggleCategoryModal && <CreateCategory closeModal={setToggleCategoryModal} />}
             <Categories>
                 {
                     categories.length > 0
@@ -81,7 +84,7 @@ const Documents = () => {
 
                     })
                 }
-                <CategoryBtn active>
+                <CategoryBtn onClick={()=> setToggleCategoryModal(true)} active>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5" stroke="#264071" strokeWidth="2" />
                     </svg>
