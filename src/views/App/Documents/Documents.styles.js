@@ -129,6 +129,7 @@ export const Toolbar = styled.div`
   grid-template-columns: 73.5% 16% 10.5%;
   row-gap: 1rem;
   padding: 3px 0 22px 0;
+  column-gap: 1rem;
 
   & button {
     column-gap: 0.4rem;
