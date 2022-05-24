@@ -59,7 +59,7 @@ export const FilterDropdownText = styled.div`
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
-    width: 100%;
+    width: 117%;
     border-style: none;
     background-color: transparent;
     position: relative;
