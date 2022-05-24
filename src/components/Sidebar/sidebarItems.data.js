@@ -23,7 +23,6 @@ export const defaultItems = [
             {
                 title: 'SIDEBAR.ADD_NEW',
                 icon: '+',
-                dropdownItems: [],
             },
         ],
     },

@@ -8,24 +8,29 @@ export const sidebarItems = [
         title: 'Dashboard',
         icon: dashboardIcon,
         url: '/app/dashboard',
-        extra: false,
+        dropdownItems: [],
     },
     {
         title: 'Documents',
         icon: docsIcon,
         url: '/app/documents',
-        extra: false,
+        dropdownItems: [],
     },
     {
         title: 'Family',
         icon: familyIcon,
         url: '/app/family',
-        extra: true,
+         dropdownItems: [
+        {
+            title: 'Add new',
+            icon: '+',
+        },
+    ],
     },
     {
         title: 'Calendar',
         icon: calendarIcon,
         url: '/app/calendar',
-        extra: false,
+        dropdownItems: [],
     }
 ];
