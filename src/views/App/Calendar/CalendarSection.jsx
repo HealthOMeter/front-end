@@ -23,7 +23,7 @@ const CalendarSection = () => {
         <PrimaryButton>Add new</PrimaryButton>
       </Toolbar>
       <Calendar
-        tileContent={({ date })=> { return <p>Testing stuff{date.getDate()}</p> }}
+        tileContent={({ date })=> {/**{ return <p>Testing stuff{date.getDate()}</p> **/}}
         value={value}
       />
     </CalendarWrapper>
