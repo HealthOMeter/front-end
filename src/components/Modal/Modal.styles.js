@@ -1,6 +1,15 @@
 import { steps } from "../../views/App/Documents/steps.data";
 import styled from "styled-components";
 
+const adaptHeight = (situation)=> {
+  switch (situation) {
+    case "adaptHeight":
+      return "fit-content";
+    default:
+      return "80%";
+  }
+};
+
 export const ModalWindow = styled.div`
   background-color: #ffffff;
   border: 1px solid #eeeeee;
@@ -11,7 +20,7 @@ export const ModalWindow = styled.div`
   top: 10%;
   z-index: 5;
   width: 40%;
-  height: ${props => props.currentStep === steps.length ? "fit-content" : "80%"};
+  height: ${props => adaptHeight(props.situation)};
   left: 50%;
   transform: translateX(-50%);
   padding: 30px;

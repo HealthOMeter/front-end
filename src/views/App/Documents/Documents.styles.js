@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Modal from "../../../components/Modal/Modal";
 
 export const DocumentsWrapper = styled.main`
   height: 60%;
@@ -126,7 +127,7 @@ export const DocumentRow = styled.div`
 
 export const Toolbar = styled.div`
   display: grid;
-  grid-template-columns: 73.5% 16% 10.5%;
+  grid-template-columns: 22.5% 16% 17% 31% 8.5%;
   row-gap: 1rem;
   padding: 3px 0 22px 0;
   column-gap: 1rem;
@@ -149,6 +150,10 @@ export const Toolbar = styled.div`
 
   & div:nth-child(1) input {
     border-style: none;
+  }
+
+  & button:nth-child(3) {
+    justify-self: flex-end;
   }
 `;
 

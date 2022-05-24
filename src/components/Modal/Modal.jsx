@@ -1,12 +1,12 @@
 import { BgrOverlay } from "../../views/App/Documents/AddFile.styles";
 import { ModalWindow } from "./Modal.styles";
 
-const Modal = ({ currentStep, children }) => {
+const Modal = ({ situation, className, children }) => {
 
   return (
     <>
       <BgrOverlay />
-      <ModalWindow currentStep={currentStep}>{children}</ModalWindow>
+      <ModalWindow className={className} situation={situation}>{children}</ModalWindow>
     </>
   );
 };

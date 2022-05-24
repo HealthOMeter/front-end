@@ -77,7 +77,7 @@ const AddFile = ({ closeAddFile }) => {
   };
 
   return (
-      <Modal currentStep={parseInt(currentStep)}>
+      <Modal customHeight="80%" situation={parseInt(currentStep) === steps.length ? "adaptHeight" : "default"}>
         <div className="header">
           {parseInt(currentStep) !== steps.length && (
             <>
