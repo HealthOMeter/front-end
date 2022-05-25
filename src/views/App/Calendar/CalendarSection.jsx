@@ -20,7 +20,7 @@ const CalendarSection = () => {
 
   return (
     <CalendarWrapper>
-      {toggleNewApptModal && <NewAppointment  closeModal={()=> setToggleNewApptModal(false)}/>}
+      {toggleNewApptModal && <NewAppointment closeModal={()=> setToggleNewApptModal(false)}/>}
       <Toolbar>
         <FilterDropdown label="Show" elements={familyElPlaceholder}/>
         <FilterDropdown label="Sort" elements={SORT_TIME}/>

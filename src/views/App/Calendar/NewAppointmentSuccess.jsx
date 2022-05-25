@@ -4,8 +4,7 @@ import { Underlined } from "../../../styles/typography/text.styles";
 import { H2 } from "../../../styles/typography/headers.styles";
 import { P } from "../../../styles/typography/text.styles";
 
-const NewAppointmentSuccess = ({ closeWindow }) => {
-  const addNewApptHandler = () => {};
+const NewAppointmentSuccess = ({ closeWindow, createAnother }) => {
 
   return (
     <SuccessBox>
@@ -37,7 +36,7 @@ const NewAppointmentSuccess = ({ closeWindow }) => {
           stroke="black"
         />
       </svg>
-      <Underlined onClick={addNewApptHandler}>Add new appointment</Underlined>
+      <Underlined onClick={createAnother}>Add new appointment</Underlined>
       <PrimaryButton type="button" event={() => closeWindow()}>
         Done
       </PrimaryButton>

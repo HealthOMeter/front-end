@@ -16,7 +16,6 @@ export const DashboardBox = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 0px 70px #E5E5E5;
     border-radius: 7px;
-    padding: 2rem;
     position: relative;
 
     & button {
@@ -24,11 +23,38 @@ export const DashboardBox = styled.div`
         bottom: 1rem;
         right: 1rem;
     }
+
+    .buttons {
+        position: absolute; 
+        bottom: 1rem;
+        right: 1rem;
+        column-gap: 0.4rem;
+        display: flex;
+        
+        svg {
+            cursor: pointer;
+        }
+
+        .prev-visits {
+            transform: rotate(180deg);
+
+        }
+    }
+
+    .documents-content,
+    .space-content,
+    .family-content {
+        padding: 2rem;
+        height: 56%;
+        display: flex;
+        align-items: baseline;
+    }
 `;
 
 export const DashboardBoxTitle = styled(H4)`
     display: flex;
     column-gap: 0.7rem;
+    padding: 2rem;
 `;
 
 export const FreeSpaceBarWrapper = styled.div`
@@ -116,4 +142,80 @@ export const NoContentTxtWrapper = styled.div`
         font-size: 14px;
         font-weight: 500;
     }
+`;
+
+export const VisitsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    height: 75%;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: ${props => props.flexPosition};
+    overflow-x: hidden;
+    column-gap: 1rem;
+
+    .visit-tile:first-child {
+        margin-left: 2rem;
+    }
+
+    .visit-tile:last-child {
+        margin-right: 2rem;
+    }
+`;
+
+export const VisitTile = styled.div`
+    background: #FFFFFF;
+    box-shadow: 0px 0px 70px rgba(66, 66, 66, 0.1);
+    border-radius: 7px;
+    height: 68%;
+    width: 33%;
+    margin-top: 2.5rem;
+    padding: 1.2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .active {
+        border: 2px solid rgba(250, 73, 126, 0.7);
+        box-shadow: 0px 0px 70px rgba(66, 66, 66, 0.1);
+        border-radius: 7px;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+
+        .date {
+            width: 30%;
+        }
+
+        .name {
+            border-left-style: solid;
+            border-left-width: 1px;
+            border-left-color: #B2B2B2;
+            width: 70%;
+            padding-left: 1rem;
+            box-sizing: border-box;
+        }
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        p:first-child {
+            color: #515E72;
+        }
+        
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            column-gap: 0.5rem;
+        }
+    }
+
+
 `;

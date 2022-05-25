@@ -18,6 +18,11 @@ export const P = styled.p`
   font-weight: 400;
 `;
 
+export const Pbold = styled.p`
+  font-size: 14px;
+  font-weight: bold;
+`;
+
 export const TinyP = styled.p`
   font-size: 10px;
   font-weight: 500;

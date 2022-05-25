@@ -5,7 +5,7 @@ import { NoContentTxtWrapper } from "./Dashboard.styles";
 
 const Family = ({ family }) => {
     return (
-        <>
+        <div className="family-content">
             {
                 family.length === 0
                     ?
@@ -17,7 +17,7 @@ const Family = ({ family }) => {
                     family.map((el, idx)=> { return <p>el</p>})
             }
             <SecondaryButton>Add new </SecondaryButton>
-        </>
+        </div>
     );
 };
 

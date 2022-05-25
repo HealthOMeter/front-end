@@ -5,7 +5,7 @@ import { NoContentTxt } from "../../../styles/typography/text.styles";
 
 const Documents = ({ docs }) => {
     return (
-        <>
+        <div className="documents-content">
             {
                 docs.length === 0
                     ?
@@ -32,7 +32,7 @@ const Documents = ({ docs }) => {
                     </div>
             }
             <SecondaryButton>See more</SecondaryButton>
-        </>
+        </div>
     );
 };
 
