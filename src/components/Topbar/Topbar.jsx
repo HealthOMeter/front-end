@@ -33,7 +33,7 @@ const Topbar = () => {
             <H1>{title}</H1>
             <SearchInput />
             <img src={notif_icon} alt="Notification icon" />
-            <Avatar />
+            <Avatar isNav={true} />
         </TopBar>
     );
 };

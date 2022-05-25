@@ -49,6 +49,12 @@ export const DashboardBox = styled.div`
         display: flex;
         align-items: baseline;
     }
+
+    .family-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 `;
 
 export const DashboardBoxTitle = styled(H4)`
@@ -218,4 +224,18 @@ export const VisitTile = styled.div`
     }
 
 
+`;
+
+export const MemberTile = styled.div`
+    background: #FFFFFF;
+    box-shadow: 0px 0px 60px rgba(133, 133, 133, 0.2);
+    border-radius: 7px;
+    width: 45%;
+    height: 80%;
+    display: grid;
+    grid-template-rows: 80% 15% 15%;
+    box-sizing: border-box;
+    padding: 1rem;
+    align-content: center;
+    justify-content: center;
 `;

@@ -1,10 +1,19 @@
-import avatar from "../../assets/png/avatarPlaceholder.png";
+import { useEffect, useState } from "react";
+import avatar from "../../assets/icons/familyMemberEmpty.svg";
 import { AvatarContainer } from "./Avatar.styles";
 
-const Avatar = ({ img = avatar }) => {
+const Avatar = ({ img, isNav = false }) => {
+    const [icon, setIcon] = useState(img);
+
+    useEffect(()=> {
+        if (!img) {
+            setIcon(avatar);
+        }
+    }, []);
+
     return (
-        <AvatarContainer>
-            <img src={img} alt="Profile avatar" />
+        <AvatarContainer isNav={isNav} >
+            <img src={icon} alt="Profile avatar" />
         </AvatarContainer>
     );
 };
