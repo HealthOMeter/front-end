@@ -81,9 +81,12 @@ export const Content = styled.div`
 
 export const NotifRowWrapper = styled.div`
     display: grid;
-    grid-template-columns: 70% 25px;
+    grid-template-columns: 70% 3%;
     align-items: center;
-    column-gap: 5%;
+    column-gap: 26%;
+    border-bottom-style: solid;
+    border-bottom-color: #F0F0F0;
+    border-bottom-width: 0.5px;
 
     p:first-child {
         font-weight: 600;
