@@ -2,6 +2,7 @@ import Dashboard from "./Dashboard/Dashboard.jsx";
 import Documents from "./Documents/Documents.jsx";
 import Family from "./Family/Family.jsx";
 import { default as Calendar } from "./Calendar/CalendarSection.jsx";
+import Settings from "./Settings/Settings.jsx";
 
 export const elements = [
   {
@@ -20,4 +21,8 @@ export const elements = [
     path: "/app/calendar",
     element: <Calendar />,
   },
+  {
+    path: "/app/settings",
+    element: <Settings />
+  }
 ];

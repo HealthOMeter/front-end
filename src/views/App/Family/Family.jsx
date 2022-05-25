@@ -1,7 +1,10 @@
 import React from 'react';
+import Documents from "../Documents/Documents";
 
 const Family = () => {
-    return (<h1>Hi, this is family section!</h1>);
+    return (
+        <Documents />
+    );
 };
 
 export default Family;

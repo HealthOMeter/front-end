@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import notif_icon from '../../assets/icons/notification.svg';
 import { H1 } from '../../styles/typography/headers.styles';
 import Avatar from '../Avatar/Avatar';
@@ -13,6 +13,7 @@ const Topbar = () => {
 
     let title;
 
+    console.log(pathname);
     switch (pathname) {
         case "/app/documents":
             title = "Documents";
@@ -21,7 +22,10 @@ const Topbar = () => {
             title = "Family";
             break;
         case "/app/calendar":
-            title = "Calendar"
+            title = "Calendar";
+            break;
+        case "/app/settings":
+            title = "Settings";
             break;
         default:
             title = `Hello, ${username}!`;
@@ -33,7 +37,7 @@ const Topbar = () => {
             <H1>{title}</H1>
             <SearchInput />
             <img src={notif_icon} alt="Notification icon" />
-            <Avatar isNav={true} />
+            <Link to="/app/settings"><Avatar isNav={true} /></Link>
         </TopBar>
     );
 };

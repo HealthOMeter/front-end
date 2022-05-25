@@ -28,6 +28,11 @@ export const TinyP = styled.p`
   font-weight: 500;
 `;
 
+export const BiggerP = styled.p`
+  font-size: 24px;
+  font-weight: 400;
+`;
+
 export const Underlined = styled.p`
   color: #0041A4;
   font-size: 12px;
