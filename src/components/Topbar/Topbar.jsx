@@ -35,7 +35,6 @@ const Topbar = () => {
     return (
         <TopBar>
             <H1>{title}</H1>
-            <SearchInput />
             <img src={notif_icon} alt="Notification icon" />
             <Link to="/app/settings"><Avatar isNav={true} /></Link>
         </TopBar>

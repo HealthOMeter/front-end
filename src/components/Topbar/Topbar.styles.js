@@ -6,7 +6,7 @@ export const TopBar = styled.nav`
     top: 0;
     width: 100%;
     justify-content: flex-end;
-    grid-template-columns: 42% 19% 0% 6%;
+    grid-template-columns: 62.5% 1% 8%;
     grid-template-rows: 4rem;
     grid-gap: 4rem;
     align-items: center;

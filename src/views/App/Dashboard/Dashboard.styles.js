@@ -5,7 +5,7 @@ export const DashboardStructure = styled.main`
     display: grid;
     grid-template-columns: 62% 1fr;
     grid-template-rows: 1fr 1fr;
-    height: 74%;
+    height: 72vh;
     row-gap: 2rem;
     column-gap: 2rem;
     margin: 8.5rem 3rem;
@@ -60,7 +60,7 @@ export const DashboardBox = styled.div`
 export const DashboardBoxTitle = styled(H4)`
     display: flex;
     column-gap: 0.7rem;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
 `;
 
 export const FreeSpaceBarWrapper = styled.div`

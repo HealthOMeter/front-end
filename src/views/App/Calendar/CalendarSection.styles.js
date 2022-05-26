@@ -2,10 +2,9 @@ import styled from "styled-components";
 import Calendar from "react-calendar";
 
 export const CalendarWrapper = styled.main`
-    height: 60%;
     width: 60%;
     margin: 8.5rem 3rem;
-    height: 71%;
+    height: 60vh;
     width: 100%;
 `;
 
@@ -90,7 +89,7 @@ export const CalendarBox = styled(Calendar)`
                     display: grid !important;
                     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
                     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-                    height: 60vh;
+                    height: 45vh;
                 }
             }
         }
