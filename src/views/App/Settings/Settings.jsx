@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SettingsWrapper, Sidebar, Content } from "./Settings.styles";
+import { SettingsWrapper, Content, Sidebar, Wrapper } from "./Settings.styles";
 import { tabs } from "./tabs.data";
 import Avatar from "../../../components/Avatar/Avatar";
 
@@ -11,22 +11,26 @@ const Settings = () => {
         <span>
           <Avatar /> Username
         </span>
-        <ul>
-          {tabs.map((tab) => {
-            return (
-              <li onClick={() => setCurrentTab(tab.name)}>
+        {tabs.map((tab) => {
+          return (
+            <Wrapper
+              onClick={() => setCurrentTab(tab.name)}
+              key={tab.name}
+              activeLink={currentTab == tab.name}
+            >
+              <div>
                 <img src={tab.icon} /> {tab.name}
-              </li>
-            );
-          })}
-        </ul>
+              </div>
+            </Wrapper>
+          );
+        })}
       </Sidebar>
       <Content>
-            {tabs.map((tab) => {
-                if (tab.name === currentTab) {
-                    return <tab.content content={tab} />
-                }
-            })}
+        {tabs.map((tab) => {
+          if (tab.name === currentTab) {
+            return <tab.content content={tab} />;
+          }
+        })}
       </Content>
     </SettingsWrapper>
   );

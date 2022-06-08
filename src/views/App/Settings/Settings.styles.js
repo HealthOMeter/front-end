@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+const bgColor = '#FFFFFF';
+const bgActiveColor = '#DFE5F1';
+
 export const SettingsWrapper = styled.main`
     background-color: #ffffff;
     height: 82%;
@@ -53,6 +56,37 @@ export const SettingsWrapper = styled.main`
 export const Sidebar = styled.div`
     display: flex;
     flex-direction: column;
+    height: 60vh;
+`;
+
+export const Wrapper = styled.div`
+    cursor: pointer;
+    width: 100%;
+    height: 8%;
+    border: solid 1px transparent;
+    border-radius: 7px;
+    background: ${props => props.activeLink ? bgActiveColor : bgColor};
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: background-color 0.3s;
+    font-weight: ${props => props.activeLink ? 600 : 500};
+    color: ${props => props.activeLink ? '#2B4474' : '#515E72'};
+
+    &:hover {
+        background-color: rgba(223, 229, 241, 0.5);
+        border-radius: 7px;
+        font-weight: 600;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+        align-items: center;
+        padding-left: 1.5rem;
+    }
 `;
 
 export const Content = styled.div`
