@@ -45,3 +45,10 @@ export const Wrapper = styled(({ activeLink, ...props }) => <Link {...props} />)
       text-decoration: none;
     }
 `;
+
+export const WrapperFamily = styled(Wrapper)`
+  height: 5%;
+  justify-content: flex-start;
+  padding-left: 30%;
+  box-sizing: border-box;
+`;
