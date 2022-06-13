@@ -6,6 +6,7 @@ import Logo from '../Logo/Logo';
 import SidebarBtn from './SidebarBtn';
 import { SideBar, Wrapper } from './Sidebar.styles';
 import FamilyMembers from './FamilyMembers';
+import { Fragment } from 'react/cjs/react.production.min';
 
 const Sidebar = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const Sidebar = () => {
   const addDropdownOptions = (dropdownItems)=> {
     if (dropdownItems) {
       dropdownItems.map((el) => {
-        return <SidebarBtn><img alt="" src={el.icon}></img><p>{el.title}</p></SidebarBtn>;
+        return <SidebarBtn key={el.title}><img alt="" src={el.icon}></img><p>{el.title}</p></SidebarBtn>;
       });
     };
   };
@@ -27,10 +28,9 @@ const Sidebar = () => {
       {
         sidebarItems.map((item, idx) => {
           return (
-            <>
+            <Fragment key={idx}>
             <Wrapper
               onClick={()=> item.title === "Family" ? setRenderFamilyMembers(true) : setRenderFamilyMembers(false)}
-              key={idx}
               to={item.url}
               activeLink={currentPath === item.url ? true : false}
             >
@@ -41,7 +41,7 @@ const Sidebar = () => {
             {
               renderFamilyMembers && (currentPath === item.url) && <FamilyMembers />
             }
-            </>
+            </Fragment>
           )
         })
       }

@@ -2,11 +2,12 @@ import styled from "styled-components";
 import Modal from "../../../components/Modal/Modal";
 
 export const DocumentsWrapper = styled.main`
-  height: 60%;
+  // height: 60%;
   width: 60%;
   margin: 8.5rem 3rem;
-  height: 71%;
+  // height: 71%;
   width: 100%;
+  max-height: 65vh;
 `;
 
 export const Categories = styled.div`

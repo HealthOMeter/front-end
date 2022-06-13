@@ -5,5 +5,5 @@ export const getCategories = (userId)=> {
 };
 
 export const addCategories = (userId, payload)=> {
-    return axios.post(`http://localhost:3000/api/Categories/${userId}`, payload);
-}
+    return axios.post(`http://localhost:3000/api/Categories?userId=${userId}&newCategory=${payload}`);
+};

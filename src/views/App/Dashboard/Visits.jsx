@@ -74,7 +74,7 @@ const Visits = ({ visits }) => {
               setStartIndex(startIndex - 3);
               setEndIndex(endIndex - 3);
             }}
-            class="prev-visits"
+            className="prev-visits"
             width="20"
             height="20"
             viewBox="0 0 20 20"

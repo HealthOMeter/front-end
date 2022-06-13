@@ -7,9 +7,11 @@ import { addCategories } from "../../../api/categories.api";
 import { useState } from "react";
 import { Subheader } from "../../../styles/typography/headers.styles";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
+import NewCategorySuccess from "./NewCategorySuccess";
 
 const CreateCategory = ({ closeModal }) => {
   const [category, setCategory] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const userId = process.env.REACT_APP_TEST_USER;
 
   const closeWindowHandler = () => {
@@ -17,41 +19,56 @@ const CreateCategory = ({ closeModal }) => {
     closeModal(false);
   };
 
-  const handleCreateCategory = ()=> {
-      addCategories(userId, category)
-      .then((res)=> console.log(res));
+  const handleCreateCategory = () => {
+    addCategories(userId, category)
+      .then((res) => {
+        if (res.status == 201) {
+          setIsSuccess(true);
+        } else {
+          setIsSuccess(false);
+        }
+      });
   };
 
   return (
     <Modal>
-      <div className="header">
-        <Subheader>Create Category</Subheader>
-        <img
-          onClick={closeWindowHandler}
-          className="close-icon"
-          src={closeIcon}
-          alt="Close icon"
-        />
-      </div>
-      <AddFileForm>
-        <TextInput
-            label="Category name"
-            list="categories-list"
-            name="category"
-        />
-        <datalist id="categories-list">
-            {categoriesAutocomplete.map((el)=> {
-                return <option key={el} value={el} />
-            })}
-        </datalist>
-      </AddFileForm>
-      <div className="bottom-btns">
-        <PrimaryButton
-            disabled={category === false}
-            event={handleCreateCategory}>
+      {
+        isSuccess
+          ?
+          <NewCategorySuccess closeWindow={()=> closeModal()} createAnother={()=> setIsSuccess(false)} />
+          :
+          <>
+            <div className="header">
+              <Subheader>Create Category</Subheader>
+              <img
+                onClick={closeWindowHandler}
+                className="close-icon"
+                src={closeIcon}
+                alt="Close icon"
+              />
+            </div>
+            <AddFileForm onChange={(e) => setCategory(e.target.value)}>
+              <TextInput
+                label="Category name"
+                list="categories-list"
+                name="category"
+              />
+              <datalist id="categories-list">
+                {categoriesAutocomplete.map((el) => {
+                  return <option key={el} value={el} />
+                })}
+              </datalist>
+            </AddFileForm>
+            <div className="bottom-btns">
+              <PrimaryButton
+                disabled={category === false}
+                event={handleCreateCategory}>
                 Create
-        </PrimaryButton>
-      </div>
+              </PrimaryButton>
+            </div>
+          </>
+      }
+
     </Modal>
   );
 };

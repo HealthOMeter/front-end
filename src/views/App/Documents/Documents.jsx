@@ -72,7 +72,7 @@ const Documents = () => {
         setDocs([]);
       }
     });
-  }, []);
+  }, [toggleAddFile]);
 
   useEffect(() => {
     getCategories(process.env.REACT_APP_TEST_USER).then((res) => {
@@ -83,13 +83,13 @@ const Documents = () => {
         setCategories([]);
       }
     });
-  }, []);
+  }, [toggleCategoryModal]);
 
   return (
     <DocumentsWrapper>
       {toggleAddFile && <AddFile closeAddFile={setToggleAddFile} />}
       {toggleCategoryModal && (
-        <CreateCategory closeModal={setToggleCategoryModal} />
+        <CreateCategory closeModal={()=> setToggleCategoryModal(false)} />
       )}
       {toggleDelDocsModal && <DeleteDocsPopup closeModal={()=> setToggleDelDocsModal(false)} docsToDelete={selectedDocs} />}
       <Categories>

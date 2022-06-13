@@ -9,8 +9,10 @@ import {
 } from "../../../styles/typography/inputs.styles";
 import { stringDateToISO } from "../../../utils/stringDateToISO";
 import { AddFileForm as AddApptForm } from "../Documents/AddFile.styles";
+import { getCategories } from "../../../api/categories.api";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
 import NewAppointmentSuccess from "./NewAppointmentSuccess";
+import { addAppointment } from "../../../api/medicalVisits.api";
 
 const NewAppointment = ({ closeModal }) => {
   const [form, setForm] = useState({
@@ -19,19 +21,26 @@ const NewAppointment = ({ closeModal }) => {
     date: "",
     notification: 0,
     isRegular: false,
-    regularity: null,
+    regularity: 0,
   });
 
   const [isCreationSuccess, setIsCreationSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [toggleModalOpen, setToggleModalOpen] = useState(true);
+  const [categories, setCategories] = useState([]);
 
   const nextStepHandler = () => {
     if (isFormValid) {
-      /**api request here */
-      /** then */
-      setIsCreationSuccess(true);
-    }
+      addAppointment(process.env.REACT_APP_TEST_USER, form)
+        .then((res) => {
+          if (res.status == 201) {
+            setIsCreationSuccess(true);
+            console.log(res);
+          } else {
+            setIsCreationSuccess(false);
+          }
+        });
+    };
   };
 
   const createAnother = () => {
@@ -48,15 +57,23 @@ const NewAppointment = ({ closeModal }) => {
   };
 
   useEffect(() => {
-    const condition =
-      form.name && form.category && form.date && form.notification;
-
+    const condition = form.name && form.category && form.date && form.notification;
     if (condition) {
       setIsFormValid(true);
     } else setIsFormValid(false);
   }, [form]);
 
-  const categories = ["physio", "blood", "pregnancy"];
+  useEffect(() => {
+    getCategories(process.env.REACT_APP_TEST_USER).then((res) => {
+      const data = res.data;
+      if (data !== undefined && data?.length > 0) {
+        setCategories(data);
+      } else {
+        setCategories([]);
+      }
+    });
+  }, []);
+
 
   return (
     <>
