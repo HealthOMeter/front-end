@@ -174,3 +174,39 @@ export const SuccessBox = styled.div`
     }
   }
 `;
+
+export const Dropdown = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+  background-color: #FFFFFF;
+  width: 146px;
+  height: 66px;
+  box-shadow: 0px 0px 20px rgba(139, 139, 139, 0.25);
+  border-radius: 7px;
+  left: ${(props)=> (props.position.left + "px")};
+  top: ${(props)=> (props.position.top + "px")};
+`;
+
+export const DropdownItem = styled.span`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    border-bottom-style: solid;
+    border-bottom-color: #F0F0F0;
+    border-bottom-width: 0.5px;
+  }
+
+  img {
+    width: 12px;
+  }
+`;

@@ -13,6 +13,11 @@ export const SmallP = styled.p`
   font-size: 11.2px;
 `;
 
+export const MediumP = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+`;
+
 export const P = styled.p`
   font-size: 14px;
   font-weight: 400;

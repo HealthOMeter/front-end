@@ -27,6 +27,8 @@ import IconButton from "../../../components/Buttons/IconButton";
 import trashIcon from "../../../assets/svg/trash.svg";
 import moveCategory from "../../../assets/svg/moveCategory.svg";
 import DeleteDocsPopup from "./DeleteDocsPopup";
+import DropdownOptions from "./DropdownOptions";
+import { options } from "./options.data";
 
 const Documents = () => {
   const [docs, setDocs] = useState([
@@ -54,10 +56,15 @@ const Documents = () => {
     status: "To check",
     format: "doc",
   }]);
+  const [distance, setDistance] = useState({
+    left: 0,
+    top: 0
+  });
 
   const [toggleAddFile, setToggleAddFile] = useState(false);
   const [toggleCategoryModal, setToggleCategoryModal] = useState(false);
   const [toggleDelDocsModal, setToggleDelDocsModal] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   if (categories.length > 0 && activeCategory === "") {
     setActiveCategory(categories[0]);
@@ -99,7 +106,10 @@ const Documents = () => {
             return (
               <Fragment key={el}>
                 <CategoryBtn
-                  onClick={() => setActiveCategory(el)}
+                  onClick={(e) => {
+                    setIsDropdownVisible(false);
+                    setActiveCategory(el);
+                  }}
                   className={isActive ? "active" : null}
                   active={isActive}
                   key={el}
@@ -107,6 +117,14 @@ const Documents = () => {
                   {el}
                   {isActive && (
                     <img
+                      onClick={(e)=> {
+                        e.stopPropagation();
+                        setIsDropdownVisible(true);
+                        setDistance({
+                          left: e.clientX - 60,
+                          top: e.clientY + 20
+                        });
+                      }}
                       className="edit-icon"
                       src={editIcon}
                       alt="Edit category"
@@ -114,6 +132,7 @@ const Documents = () => {
                   )}
                 </CategoryBtn>
                 <img src={separator} />
+                {isDropdownVisible && activeCategory === el && <DropdownOptions position={distance} options={options}/>}
               </Fragment>
             );
           })}

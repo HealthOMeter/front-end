@@ -1,6 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getRegularAppointments } from "../../../api/medicalVisits.api";
 import { NoContentTxt } from "../../../styles/typography/text.styles";
 import { NoContentTxtWrapper, VisitsWrapper } from "./Dashboard.styles";
 import RegularVisitTile from "./RegularVisitTile";

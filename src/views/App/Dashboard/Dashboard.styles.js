@@ -161,7 +161,7 @@ export const VisitsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   height: 75%;
-  width: 100%;
+  width: 95%;
   align-items: flex-start;
   justify-content: ${(props) => props.flexPosition};
   overflow-x: hidden;
