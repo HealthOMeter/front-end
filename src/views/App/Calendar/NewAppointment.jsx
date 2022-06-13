@@ -22,6 +22,7 @@ const NewAppointment = ({ closeModal }) => {
     notification: 0,
     isRegular: false,
     regularity: 0,
+    isDone: false
   });
 
   const [isCreationSuccess, setIsCreationSuccess] = useState(false);

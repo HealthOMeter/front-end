@@ -1,5 +1,6 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getRegularAppointments } from "../../../api/medicalVisits.api";
 import { NoContentTxt } from "../../../styles/typography/text.styles";
 import { NoContentTxtWrapper, VisitsWrapper } from "./Dashboard.styles";
 import RegularVisitTile from "./RegularVisitTile";
@@ -10,46 +11,12 @@ const Visits = ({ visits }) => {
   const [flexPosition, setFlexPosition] = useState("center");
 
   useLayoutEffect(()=> {
-    if ((visits.length - startIndex) > 1) {
+    if ((visits.length - startIndex) > 2) {
         setFlexPosition("center");
     } else {
         setFlexPosition("flex-start");
     }
   },[startIndex]);
-
-
-  const VISITS_PLACEHOLDER = [
-    {
-      month: "May",
-      day: 24,
-      name: "Breast USG",
-      regularity: 6,
-      isDone: false,
-    },
-    {
-      month: "Sep",
-      day: 5,
-      name: "Abdominal USG",
-      regularity: 12,
-      isDone: true,
-    },
-    {
-      month: "Oct",
-      day: 8,
-      name: "Cytology",
-      regularity: 24,
-      isDone: false,
-    },
-    {
-      month: "Oct",
-      day: 8,
-      name: "Cytology",
-      regularity: 24,
-      isDone: false,
-    },
-  ];
-
-  visits = VISITS_PLACEHOLDER;
 
   return (
     <>
@@ -60,9 +27,9 @@ const Visits = ({ visits }) => {
         </NoContentTxtWrapper>
       ) : (
         <VisitsWrapper flexPosition={flexPosition}>
-          {VISITS_PLACEHOLDER.map((visit, idx) => {
+          {visits.map((visit, idx) => {
             if (idx >= startIndex && idx < endIndex) {
-              return <RegularVisitTile key={visit.name} visit={visit} />;
+              return <RegularVisitTile key={visit.name + idx} visit={visit} />;
             }
           })}
         </VisitsWrapper>
