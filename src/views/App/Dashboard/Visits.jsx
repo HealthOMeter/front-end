@@ -19,8 +19,6 @@ const Visits = ({ visits }) => {
     }
   },[startIndex]);
 
-  console.log(regularVisits);
-
   useEffect(()=> {
     const sortedVisits = visits.sort((elA, elB)=> {
       if (elA.date > elB.date) {
