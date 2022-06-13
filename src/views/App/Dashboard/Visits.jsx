@@ -9,6 +9,7 @@ const Visits = ({ visits }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(3);
   const [flexPosition, setFlexPosition] = useState("center");
+  const [regularVisits, setRegularVisits] = useState(visits);
 
   useLayoutEffect(()=> {
     if ((visits.length - startIndex) > 2) {
@@ -18,23 +19,39 @@ const Visits = ({ visits }) => {
     }
   },[startIndex]);
 
+  console.log(regularVisits);
+
+  useEffect(()=> {
+    const sortedVisits = visits.sort((elA, elB)=> {
+      if (elA.date > elB.date) {
+        return 1;
+      }
+      if (elA.date < elB.date) {
+        return -1;
+      }
+      return 0;
+    })
+    setRegularVisits(sortedVisits);
+  }, [visits]);
+
+  console.log(regularVisits);
   return (
     <>
-      {visits.length === 0 ? (
+      {regularVisits.length === 0 ? (
         <NoContentTxtWrapper>
           <NoContentTxt>You don't have any regular visits yet</NoContentTxt>
           <Link to="/create">Create a visit</Link>
         </NoContentTxtWrapper>
       ) : (
         <VisitsWrapper flexPosition={flexPosition}>
-          {visits.map((visit, idx) => {
+          {regularVisits.map((visit, idx) => {
             if (idx >= startIndex && idx < endIndex) {
               return <RegularVisitTile key={visit.name + idx} visit={visit} />;
             }
           })}
         </VisitsWrapper>
       )}
-      <div class="buttons">
+      <div className="buttons">
         {startIndex !== 0 && (
           <svg
             onClick={() => {
@@ -69,7 +86,7 @@ const Visits = ({ visits }) => {
             setStartIndex(startIndex + 3);
             setEndIndex(endIndex + 3);
           }}
-          class="next-visits"
+          className="next-visits"
           width="20"
           height="20"
           viewBox="0 0 20 20"
