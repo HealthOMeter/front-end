@@ -19,19 +19,21 @@ const Visits = ({ visits }) => {
   },[startIndex]);
 
   useEffect(()=> {
-    const sortedVisits = visits.sort((elA, elB)=> {
-      if (elA.date > elB.date) {
-        return 1;
-      }
-      if (elA.date < elB.date) {
-        return -1;
-      }
-      return 0;
-    })
-    setRegularVisits(sortedVisits);
+    if(visits.length > 0) {
+      const sortedVisits = visits.sort((elA, elB)=> {
+        if (elA.date > elB.date) {
+          return 1;
+        }
+        if (elA.date < elB.date) {
+          return -1;
+        }
+        return 0;
+      })
+      setRegularVisits(sortedVisits);
+    }
   }, [visits]);
 
-  console.log(regularVisits);
+  console.log("visits", visits);
   return (
     <>
       {regularVisits.length === 0 ? (

@@ -179,6 +179,7 @@ export const VisitsWrapper = styled.div`
 export const VisitTile = styled.div`
   background: #ffffff;
   box-shadow: 0px 0px 70px rgba(66, 66, 66, 0.1);
+  border: 2px solid ${((props)=> (props.isToday ? "rgba(250, 73, 126, 0.7)" : "transparent"))};
   border-radius: 7px;
   height: 68%;
   width: 33%;

@@ -1,19 +1,32 @@
 import { P, Pbold, SmallP } from "../../../styles/typography/text.styles";
 import { VisitTile } from "./Dashboard.styles";
 import { monthNumberToString } from "../../../utils/monthNumberToString";
+import { useEffect, useState } from "react";
 
 const RegularVisitTile = ({ visit }) => {
-  console.log(visit);
+  //TODO: refactor
   const date = new Date(visit.date);
-  const day = date.getDay();
-  let month = date.getMonth();
-  month = monthNumberToString(month);
+  const day = date.getDate();
+  const month = date.getMonth();
+  const monthStr = monthNumberToString(month);
+  const today = new Date();
+  const todayDay = today.getDate();
+  const todayMonth = today.getMonth();
+
+  const [isDateToday, setIsDateToday] = useState(false);
+
+  useEffect(()=> {
+    if (day === todayDay && month === todayMonth) {
+      setIsDateToday(true);
+    } else setIsDateToday(false);
+  }, [])
+  
 
   return (
-    <VisitTile className="visit-tile">
+    <VisitTile isToday={isDateToday} className="visit-tile">
       <div className="header">
           <Pbold className="date">
-            {month}, {day}
+            {monthStr}, {day}
           </Pbold>
           <P className="name">{visit.name}</P>
       </div>
