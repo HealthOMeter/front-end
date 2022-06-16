@@ -73,3 +73,7 @@ export const FilterDropdownText = styled.div`
     cursor: pointer;
   }
 `;
+
+export const CheckboxInput = styled.input`
+  border: 1.75px solid #1A1A1A;
+`;

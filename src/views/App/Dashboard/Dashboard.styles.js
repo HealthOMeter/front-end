@@ -52,8 +52,10 @@ export const DashboardBox = styled.div`
   }
 
   .documents-content {
-    div {
+    & > div {
       width: 100%;
+      max-height: 90%;
+      overflow: hidden;
     }
   }
 
