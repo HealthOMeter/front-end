@@ -4,7 +4,7 @@ import { H4 } from "../../../styles/typography/headers.styles";
 export const DashboardStructure = styled.main`
   display: grid;
   grid-template-columns: 62% 1fr;
-  grid-template-rows: 16vw 42vh;
+  grid-template-rows: 31vh 42vh;
   height: 72vh;
   row-gap: 2rem;
   column-gap: 2rem;
