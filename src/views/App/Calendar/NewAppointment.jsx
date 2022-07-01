@@ -2,6 +2,7 @@ import Modal from "../../../components/Modal/Modal";
 import { Subheader } from "../../../styles/typography/headers.styles";
 import closeIcon from "../../../assets/icons/close.svg";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   InputLabel,
   InputText,
@@ -15,20 +16,29 @@ import NewAppointmentSuccess from "./NewAppointmentSuccess";
 import { addAppointment } from "../../../api/medicalVisits.api";
 
 const NewAppointment = ({ closeModal }) => {
+  const history = useHistory();
+  const comingFromMainDashboard = history.location.newAppt;
+
   const [form, setForm] = useState({
     name: "",
-    category: "",
+    category: "all",
     date: "",
     notification: 0,
     isRegular: false,
     regularity: 0,
     isDone: false
   });
-  
+
   const [isCreationSuccess, setIsCreationSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
-  const [toggleModalOpen, setToggleModalOpen] = useState(true);
-  const [categories, setCategories] = useState([]);
+  const [toggleModalOpen] = useState(true);
+  const [categories, setCategories] = useState(["all"]);
+
+  const redirectAfterClose = () => {
+    if (comingFromMainDashboard) {
+      history.push('/app/dashboard');
+    }
+  }
 
   const nextStepHandler = () => {
     if (isFormValid) {
@@ -36,7 +46,6 @@ const NewAppointment = ({ closeModal }) => {
         .then((res) => {
           if (res.status == 201) {
             setIsCreationSuccess(true);
-            console.log(res);
           } else {
             setIsCreationSuccess(false);
           }
@@ -49,7 +58,7 @@ const NewAppointment = ({ closeModal }) => {
     setIsCreationSuccess(false);
     setForm({
       name: "",
-      category: "",
+      category: "all",
       date: "",
       notification: 0,
       isRegular: false,
@@ -68,13 +77,12 @@ const NewAppointment = ({ closeModal }) => {
     getCategories(process.env.REACT_APP_TEST_USER).then((res) => {
       const data = res.data;
       if (data !== undefined && data?.length > 0) {
-        setCategories(data);
+        setCategories(["all", ...data]);
       } else {
-        setCategories([]);
+        setCategories(["all"]);
       }
     });
   }, []);
-
 
   return (
     <>
@@ -82,7 +90,10 @@ const NewAppointment = ({ closeModal }) => {
         <Modal situation="adaptHeight">
           {isCreationSuccess ? (
             <NewAppointmentSuccess
-              closeWindow={() => closeModal()}
+              closeWindow={() => {
+                closeModal();
+                redirectAfterClose();
+              }}
               createAnother={() => createAnother()}
             />
           ) : (
@@ -90,7 +101,10 @@ const NewAppointment = ({ closeModal }) => {
               <div className="header">
                 <Subheader>New appointment</Subheader>
                 <img
-                  onClick={closeModal}
+                  onClick={() => { 
+                    closeModal();
+                    redirectAfterClose();
+                  }}
                   className="close-icon"
                   src={closeIcon}
                   alt="Close icon"
