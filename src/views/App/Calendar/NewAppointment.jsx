@@ -24,7 +24,7 @@ const NewAppointment = ({ closeModal }) => {
     regularity: 0,
     isDone: false
   });
-
+  
   const [isCreationSuccess, setIsCreationSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [toggleModalOpen, setToggleModalOpen] = useState(true);

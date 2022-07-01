@@ -19,25 +19,22 @@ const AddFile = ({ closeAddFile }) => {
   );
   const [files, setFiles] = useState({});
   const [form, setForm] = useState({
-    id: `${userId}`,
     name: "",
     date: "",
     status: null,
-    category: "",
+    category: "all",
   });
 
-  useEffect(() => {
+  const handleSendFileInfo = ()=> {
     const formValues = Object.values(form);
     const condition =
       formValues.includes("") ||
       formValues.includes(undefined) ||
       formValues.includes(null);
-    if (condition) {
-      return;
-    } else {
-      sendFileInfo(form, userId).then((res) => console.log(res));
+    if (!condition) {
+      sendFileInfo(form, userId).then((res) => console.log("send file info", res));
     }
-  }, [form]);
+  }
 
   const closeWindowHandler = () => {
     closeAddFile(false);
@@ -63,13 +60,13 @@ const AddFile = ({ closeAddFile }) => {
 
     if (parseInt(currentStep) + 1 === steps.length) {
       const userId = process.env.REACT_APP_TEST_USER;
-      console.log(form);
       const formData = new FormData();
       formData.append("FileContent", files[0]);
       uploadFile(formData, userId).then((res) => {
         const data = res.data.response;
         setForm({ ...form, format: data.format, path: data.path });
-      });
+      })
+      .then(_=> handleSendFileInfo());
     }
 
     if (parseInt(currentStep) === steps.length) {

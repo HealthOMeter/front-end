@@ -6,16 +6,16 @@ import { stringDateToISO } from "../../../utils/stringDateToISO";
 
 const Step2 = ({ setForm, form }) => {
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(["all"]);
 
     useEffect(() => {
         getCategories(process.env.REACT_APP_TEST_USER)
             .then((res) => {
                 const data = res.data;
                 if (data !== undefined && data?.length > 0) {
-                    setCategories(data);
+                    setCategories(["all", ...data]);
                 } else {
-                    setCategories([]);
+                    setCategories(["all"]);
                 };
             })
     }, []);

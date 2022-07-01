@@ -12,10 +12,12 @@ import { Subheader } from "../../../styles/typography/headers.styles";
 import { getCategories } from "../../../api/categories.api";
 import { getAllAppointments } from "../../../api/medicalVisits.api";
 import { P } from "../../../styles/typography/text.styles";
+import { useHistory } from "react-router-dom";
 
 const CalendarSection = () => {
+  const location = useHistory().location;
   const [value, setValue] = useState(new Date());
-  const [toggleNewApptModal, setToggleNewApptModal] = useState(false);
+  const [toggleNewApptModal, setToggleNewApptModal] = useState(location.newAppt ?? false);
 
   const familyElPlaceholder = ["All", "Me", "Alen", "Mom"];
   const SORT_TIME = ["all", " incoming", "past"];
