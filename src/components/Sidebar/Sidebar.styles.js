@@ -46,9 +46,14 @@ export const Wrapper = styled(({ activeLink, ...props }) => <Link {...props} />)
     }
 `;
 
-export const WrapperFamily = styled(Wrapper)`
-  height: 5%;
+export const WrapperFamily = styled(({ ...props }) => <Wrapper {...props} />)`
+  height: 7%;
   justify-content: flex-start;
   padding-left: 30%;
   box-sizing: border-box;
+  column-gap: 0.3rem;
+
+  background-color: ${props => props.selected ? bgActiveColor : null};
+  color: ${props => props.selected ? '#2B4474' : '#515E72'};
+  font-weight: ${props => props.selected ? 600 : 500};
 `;

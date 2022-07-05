@@ -32,7 +32,7 @@ const NewAppointment = ({ closeModal }) => {
   const [isCreationSuccess, setIsCreationSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [toggleModalOpen] = useState(true);
-  const [categories, setCategories] = useState(["all"]);
+  const [categories, setCategories] = useState([]);
 
   const redirectAfterClose = () => {
     if (comingFromMainDashboard) {
@@ -77,9 +77,9 @@ const NewAppointment = ({ closeModal }) => {
     getCategories(process.env.REACT_APP_TEST_USER).then((res) => {
       const data = res.data;
       if (data !== undefined && data?.length > 0) {
-        setCategories(["all", ...data]);
+        setCategories(data);
       } else {
-        setCategories(["all"]);
+        setCategories([]);
       }
     });
   }, []);

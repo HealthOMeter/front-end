@@ -4,7 +4,7 @@ import { AddFileForm } from "./AddFile.styles";
 import TextInput from "../../../components/Inputs/TextInput";
 import { categoriesAutocomplete } from "./categoriesAutocomplete.data";
 import { addCategories } from "../../../api/categories.api";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Subheader } from "../../../styles/typography/headers.styles";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
 import NewCategorySuccess from "./NewCategorySuccess";

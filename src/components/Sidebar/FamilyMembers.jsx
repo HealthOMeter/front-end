@@ -1,33 +1,62 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WrapperFamily } from "./Sidebar.styles";
+import SidebarInput from "../Inputs/SidebarInput";
+import icon from "../../assets/icons/familyMember.svg";
+import { useHistory } from "react-router-dom";
+import { addFamilyMember } from "../../api/familyMembers.api";
 
 const FamilyMembers = ({ members }) => {
-  const FAMILY_PLACEHOLDER = [
-    {
-      name: "Dagmara",
-      relation: "sister",
-      icon: "https://cdn.pixabay.com/photo/2017/05/31/04/59/beautiful-2359121_960_720.jpg",
-    },
-    {
-      name: "Krzysiek",
-      relation: "father",
-      icon: "https://cdn.pixabay.com/photo/2017/06/26/02/47/man-2442565_960_720.jpg",
-    },
-    {
-      name: "Aniela",
-      relation: "grandmother",
-      icon: "",
-    },
-  ];
+  const [newMember, setNewMember] = useState(false);
+  const pathname = useHistory().location.pathname;
+  const [selected, setSelected] = useState("");
+  const userId = process.env.REACT_APP_TEST_USER;
+  const [familyMember, setFamilyMember] = useState({
+    name: "",
+    icon: "",
+    familyLink: "",
+    docs: [],
+    categories: [],
+    medicalVisits: []
+  });
 
-  members = FAMILY_PLACEHOLDER;
+  useEffect(() => {
+    if (familyMember.name.length > 0) {
+      addFamilyMember(userId, familyMember)
+        .then((res) => {
+          setSelected(members[0]?.name ?? "addNew");
+          setNewMember(false);
+        });
+    }
+  }, [familyMember]);
+
+  const addNew = () => {
+    setNewMember(true);
+    setSelected("addNew");
+  };
+
+  const clickOnMemberHandler = (selectedName) => {
+    setSelected(selectedName);
+  };
+
+  console.log("membeeers", members);
 
   return (
     <>
-      {members.map((member) => {
-        return <WrapperFamily>{member.name}</WrapperFamily>;
+      {members.length > 0 && members.map((member, idx) => {
+        return (
+          <WrapperFamily
+            onClick={() => clickOnMemberHandler(member.name)}
+            selected={member.name === selected} key={member.name + idx}
+            to="#">
+            <img src={icon} alt="#" />{member.name}
+          </WrapperFamily>
+        )
       })}
-      <WrapperFamily>+ Add new </WrapperFamily>
+      {newMember && <WrapperFamily selected={selected === "addNew"} to="#" onClick={addNew}>
+        <img src={icon} alt="#" />
+        <SidebarInput familyMember={familyMember} setNewMember={setFamilyMember} />
+      </WrapperFamily>}
+      <WrapperFamily to="#" onClick={addNew}>+ Add new </WrapperFamily>
     </>
   );
 };

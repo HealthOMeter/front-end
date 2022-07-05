@@ -10,7 +10,7 @@ const FamilyMemberTile = ({ familyMember })=> {
                 {familyMember.name}
             </Pbold>
             <P>
-                {familyMember.relation}
+                {familyMember.familyLink}
             </P>
         </MemberTile>
     )

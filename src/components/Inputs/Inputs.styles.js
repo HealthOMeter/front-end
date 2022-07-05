@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
 export const Text = styled.input`
-    font-family: 'Poppins';
-    border: 1px solid #D2D9E6;
-    box-sizing: border-box;
-    border-radius: 11px;
-    height: 50px;
-    color: #7B89A7;
-    font-size: 12px;
-    line-height: 18px;
-    font-weight: 500;
-    padding-left: 47px;
-    
-    &:focus-visible {
-      outline: 1px solid #B8CFF9;
-      filter: drop-shadow(0px 0px 5px #A0BEF3);
-      border-radius: 2px;
-    }
+  font-family: "Poppins";
+  border: 1px solid #d2d9e6;
+  box-sizing: border-box;
+  border-radius: 11px;
+  height: 50px;
+  color: #7b89a7;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+  padding-left: 47px;
+
+  &:focus-visible {
+    outline: 1px solid #b8cff9;
+    filter: drop-shadow(0px 0px 5px #a0bef3);
+    border-radius: 2px;
+  }
 `;
 
 export const SearchInputWrapper = styled.div`
@@ -39,9 +39,9 @@ export const SearchInputWrapper = styled.div`
 export const FilterDropdownText = styled.div`
   border: 1px solid #ececec;
   border-radius: 7px;
-  displaY: grid;
+  display: grid;
   grid-template-columns: 38% 1fr 20px;
-  color: #64748B;
+  color: #64748b;
   font-size: 11.2px;
 
   span {
@@ -53,12 +53,12 @@ export const FilterDropdownText = styled.div`
   }
 
   select {
-    color: #64748B;
+    color: #64748b;
     font-size: 11.2px;
     -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 1px;
-    text-overflow: '';
+    text-overflow: "";
     width: 117%;
     border-style: none;
     background-color: transparent;
@@ -75,5 +75,37 @@ export const FilterDropdownText = styled.div`
 `;
 
 export const CheckboxInput = styled.input`
-  border: 1.75px solid #1A1A1A;
+  border: 1.75px solid #1a1a1a;
+`;
+
+export const MenuInput = styled.label`
+  border: 1px solid #d2d9e6;
+  border-radius: 2px;
+  display: grid;
+  width: 75%;
+  grid-template-columns: ${(props) => (props.isValid ? "80% 20%" : "100% 0")};
+  background-color: #fff;
+  align-items: center;
+  height: 65%;
+  box-sizing: border-box;
+
+  input {
+    border: 1px solid #d2d9e6;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #2B4474;
+    font-weight: 500;
+  }
+
+  img {
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+    transition: 0.3s;
+    
+    &:hover {
+      scale: 1.2;
+    }
+  }
 `;

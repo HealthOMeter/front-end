@@ -26,6 +26,7 @@ const Dashboard = () => {
             setTakenSpace(data.takenSpace);
             setDocs(data.documents);
             setFamily(data.family);
+            console.log("data", data);
             localStorage.setItem("name", data.userName);
         });
 

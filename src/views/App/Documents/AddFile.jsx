@@ -5,7 +5,7 @@ import closeIcon from "../../../assets/icons/close.svg";
 import { steps } from "./steps.data";
 import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
 import SecondaryButton from "../../../components/SecondaryBtn/SecondaryBtn";
-import { sendFileInfo, uploadFile } from "../../../api/files.api";
+import { uploadFile } from "../../../api/files.api";
 import Modal from "../../../components/Modal/Modal";
 
 const AddFile = ({ closeAddFile }) => {
@@ -17,22 +17,24 @@ const AddFile = ({ closeAddFile }) => {
   const [currentStep, setCurrentStep] = useState(
     localStorage.getItem("addFileStep")
   );
+
   const [files, setFiles] = useState({});
   const [form, setForm] = useState({
-    name: "",
-    date: "",
-    status: null,
-    category: "all",
+      name: "",
+      date: "",
+      status: null,
+      format: "",
+      category: "all",
+      path: ""
   });
 
-  const handleSendFileInfo = ()=> {
-    const formValues = Object.values(form);
-    const condition =
-      formValues.includes("") ||
-      formValues.includes(undefined) ||
-      formValues.includes(null);
+  const handleSendFile = ()=> {
+    const condition = form.name === "" || form.date === "" || form.status === null;
     if (!condition) {
-      sendFileInfo(form, userId).then((res) => console.log("send file info", res));
+      const formData = new FormData();
+      formData.append("FileContent", files[0]);
+      formData.append("documentInfo", JSON.stringify(form));
+      uploadFile(userId, formData).then((res) => console.log("send file info", res));
     }
   }
 
@@ -59,14 +61,7 @@ const AddFile = ({ closeAddFile }) => {
     }
 
     if (parseInt(currentStep) + 1 === steps.length) {
-      const userId = process.env.REACT_APP_TEST_USER;
-      const formData = new FormData();
-      formData.append("FileContent", files[0]);
-      uploadFile(formData, userId).then((res) => {
-        const data = res.data.response;
-        setForm({ ...form, format: data.format, path: data.path });
-      })
-      .then(_=> handleSendFileInfo());
+      handleSendFile();
     }
 
     if (parseInt(currentStep) === steps.length) {
