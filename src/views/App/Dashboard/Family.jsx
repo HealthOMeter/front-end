@@ -8,10 +8,9 @@ import { removeRandomly } from "../../../utils/removeRandomly";
 import { useEffect } from "react";
 import AddNewFamily from "./AddNewFamily";
 
-const Family = ({ family }) => {
+const Family = ({ family, setToggleModalOpen }) => {
     const [familyMembers, setFamilyMembers] = useState(family);
-    const [toggleModalOpen, setToggleModalOpen] = useState(false);
-
+    
     useEffect(() => {
         if (family.length > 2) {
             setFamilyMembers(removeRandomly(family, 2));
@@ -22,7 +21,6 @@ const Family = ({ family }) => {
 
     return (
         <>
-            {toggleModalOpen && <AddNewFamily {...toggleModalOpen} closeModal={()=> setToggleModalOpen(false)}/>}
             <div className="family-content">
                 {
                     familyMembers.length === 0

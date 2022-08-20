@@ -4,17 +4,32 @@ import { useState } from "react";
 import { Subheader } from "../../../styles/typography/headers.styles";
 import { InputLabel } from "../../../styles/typography/inputs.styles";
 import { InputText } from "../../../styles/typography/inputs.styles";
+import PrimaryButton from "../../../components/PrimaryBtn/PrimaryButton";
+import { addFamilyMember } from "../../../api/familyMembers.api";
 
-const AddNewFamily = ({ toggleModalOpen, closeModal }) => {
+const AddNewFamily = ({ closeModal }) => {
 
     const [newMember, setNewMember] = useState({
         name: "",
         icon: "",
-        family_link: "",
+        familyLink: "",
         docs: [],
         categories: [],
         medical_visits: []
     });
+
+    const addFamilyMemberHandler = () => {
+        addFamilyMember(process.env.REACT_APP_TEST_USER, newMember)
+            .then((res) => {
+                if (res?.status == 200) {
+                    //todo: some message that all is good
+                    closeModal();
+                } else {
+                    //todo: msg
+                    console.warn("ADDING FAMILY MEMBER DIDN'T WORK");
+                }
+            });
+    };
 
     return (
         <Modal situation="adaptHeight">
@@ -42,12 +57,19 @@ const AddNewFamily = ({ toggleModalOpen, closeModal }) => {
                 <InputLabel>
                     Family link
                     <InputText
-                        name="family_link"
+                        name="familyLink"
                         placeholder="ex. mother"
                         type="text"
-                        onInput={(e) => setNewMember({ ...newMember, family_link: e.target.value })}
+                        onInput={(e) => setNewMember({ ...newMember, familyLink: e.target.value })}
                     />
                 </InputLabel>
+                {
+                    newMember.name && newMember.familyLink && (
+                        <PrimaryButton type="button" event={addFamilyMemberHandler}>
+                            Add
+                        </PrimaryButton>
+                    )
+                }
             </form>
         </Modal>
     )

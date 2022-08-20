@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import SecondaryButton from "../../../components/SecondaryBtn/SecondaryBtn";
 import { kbToGb } from "../../../utils/kbToGb";
 import {
@@ -11,6 +12,15 @@ const FreeSpace = ({ takenSpace }) => {
   const takenSpaceGB = kbToGb(takenSpace).toFixed(2);
   const freeSpace = TOTAL_SPACE - takenSpaceGB;
   const takenSpacePercent = (takenSpaceGB / TOTAL_SPACE) * 100;
+  const history = useHistory();
+  
+  const handleFreeSpace = ()=> {
+    history.push({
+      pathname: "/app/documents", 
+      state: { freeSpace: true }
+    });
+  }
+
   return (
     <div className="space-content">
       <NoContentTxtWrapper>
@@ -20,7 +30,7 @@ const FreeSpace = ({ takenSpace }) => {
         <FreeSpaceBarWrapper>
           <FreeSpaceBar takenSpacePercent={takenSpacePercent} />
         </FreeSpaceBarWrapper>
-        <SecondaryButton>Free space</SecondaryButton>
+        <SecondaryButton event={handleFreeSpace}>Free space</SecondaryButton>
       </NoContentTxtWrapper>
     </div>
   );

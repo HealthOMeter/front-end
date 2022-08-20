@@ -13,4 +13,10 @@ export const SecondaryBtn = styled.button`
     background-color: #fff;
     border-radius: 7px;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        border-color: #FA497E;
+        color: #FA497E;
+      }
 `;

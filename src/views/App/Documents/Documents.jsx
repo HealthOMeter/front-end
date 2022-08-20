@@ -29,8 +29,11 @@ import moveCategory from "../../../assets/svg/moveCategory.svg";
 import DeleteDocsPopup from "./DeleteDocsPopup";
 import DropdownOptions from "./DropdownOptions";
 import { options } from "./options.data";
+import { useLocation } from "react-router-dom";
+import Modal from "../../../components/Modal/Modal";
 
 const Documents = () => {
+  const location = useLocation();
   const [docs, setDocs] = useState([
     {
       id: "somerandomID",
@@ -49,13 +52,7 @@ const Documents = () => {
   ]);
   const [activeCategory, setActiveCategory] = useState("");
   const [categories, setCategories] = useState([]);
-  const [selectedDocs, setSelectedDocs] = useState([{
-    id: "somerandomID",
-    name: "RTG",
-    date: "2022-12-10",
-    status: "To check",
-    format: "doc",
-  }]);
+  const [selectedDocs, setSelectedDocs] = useState([]);
   const [distance, setDistance] = useState({
     left: 0,
     top: 0
@@ -65,10 +62,17 @@ const Documents = () => {
   const [toggleCategoryModal, setToggleCategoryModal] = useState(false);
   const [toggleDelDocsModal, setToggleDelDocsModal] = useState(false);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [showFreeSpaceInfo, setShowFreeSpaceInfo] = useState(false);
 
   if (categories.length > 0 && activeCategory === "") {
     setActiveCategory(categories[0]);
   }
+
+  useEffect(() => {
+    if (location.state?.freeSpace) {
+      setShowFreeSpaceInfo(true);
+    } else setShowFreeSpaceInfo(false);
+  }, []);
 
   useEffect(() => {
     getFiles(process.env.REACT_APP_TEST_USER).then((res) => {
@@ -92,89 +96,68 @@ const Documents = () => {
     });
   }, [toggleCategoryModal]);
 
-  return (
-    <DocumentsWrapper>
-      {toggleAddFile && <AddFile closeAddFile={setToggleAddFile} />}
-      {toggleCategoryModal && (
-        <CreateCategory closeModal={()=> setToggleCategoryModal(false)} />
-      )}
-      {toggleDelDocsModal && <DeleteDocsPopup closeModal={()=> setToggleDelDocsModal(false)} docsToDelete={selectedDocs} />}
-      <Categories>
-        {categories.length > 0 &&
-          categories.map((el) => {
-            const isActive = el === activeCategory;
-            return (
-              <Fragment key={el}>
-                <CategoryBtn
-                  onClick={(e) => {
-                    setIsDropdownVisible(false);
-                    setActiveCategory(el);
-                  }}
-                  className={isActive ? "active" : null}
-                  active={isActive}
-                  key={el}
-                >
-                  {el}
-                  {isActive && (
-                    <img
-                      onClick={(e)=> {
-                        e.stopPropagation();
-                        setIsDropdownVisible(true);
-                        setDistance({
-                          left: e.clientX - 60,
-                          top: e.clientY + 20
-                        });
-                      }}
-                      className="edit-icon"
-                      src={editIcon}
-                      alt="Edit category"
-                    />
-                  )}
-                </CategoryBtn>
-                <img src={separator} />
-                {isDropdownVisible && activeCategory === el && <DropdownOptions position={distance} options={options}/>}
-              </Fragment>
-            );
-          })}
-        <CategoryBtn onClick={() => setToggleCategoryModal(true)} active>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5"
-              stroke="#264071"
-              strokeWidth="2"
-            />
-          </svg>
-        </CategoryBtn>
-      </Categories>
-      <DocumentsBox>
-        <H4>My files</H4>
-        <Toolbar className="documents-toolbox">
-          <SearchInput placeholder="Search by name or date" />
-          <FilterDropdown elements={elements} />
-          {selectedDocs.length > 0 ? (
-            <>
-              <IconButton event={()=> setToggleDelDocsModal(true)} icon={trashIcon} text="Delete" type="primary" />
-              <IconButton
-                icon={moveCategory}
-                text="Move to different category"
-              />
-            </>
-          )
-            :(
-            <>
-            <div></div>
-            <div></div>
-            </>
-          )
-        }
+  //TODO: check data model
+  const selectDocument = (isChecked, docId) => {
+    if (isChecked) {
+      setSelectedDocs([...selectedDocs, docId])
+    }
+  }
 
-          <PrimaryButton event={() => setToggleAddFile(true)}>
+  const openDocument = (e, path) => {
+    if (e.currentTarget != e.target) return;
+    else window.open(path, "_blank");
+  }
+
+  return (
+    <>
+      {showFreeSpaceInfo && <Modal situation="adaptHeight">
+        <p>You need to delete some documents to free some space!</p>
+        <PrimaryButton event={() => setShowFreeSpaceInfo(false)}>OK</PrimaryButton>
+      </Modal>}
+      <DocumentsWrapper>
+        {toggleAddFile && <AddFile closeAddFile={setToggleAddFile} />}
+        {toggleCategoryModal && (
+          <CreateCategory closeModal={() => setToggleCategoryModal(false)} />
+        )}
+        {toggleDelDocsModal && <DeleteDocsPopup closeModal={() => setToggleDelDocsModal(false)} docsToDelete={selectedDocs} />}
+        <Categories>
+          {categories.length > 0 &&
+            categories.map((el) => {
+              const isActive = el === activeCategory;
+              return (
+                <Fragment key={el}>
+                  <CategoryBtn
+                    onClick={(e) => {
+                      setIsDropdownVisible(false);
+                      setActiveCategory(el);
+                    }}
+                    className={isActive ? "active" : null}
+                    active={isActive}
+                    key={el}
+                  >
+                    {el}
+                    {isActive && (
+                      <img
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsDropdownVisible(true);
+                          setDistance({
+                            left: e.clientX - 60,
+                            top: e.clientY + 20
+                          });
+                        }}
+                        className="edit-icon"
+                        src={editIcon}
+                        alt="Edit category"
+                      />
+                    )}
+                  </CategoryBtn>
+                  <img src={separator} />
+                  {isDropdownVisible && activeCategory === el && <DropdownOptions position={distance} options={options} />}
+                </Fragment>
+              );
+            })}
+          <CategoryBtn onClick={() => setToggleCategoryModal(true)} active>
             <svg
               width="20"
               height="20"
@@ -184,42 +167,81 @@ const Documents = () => {
             >
               <path
                 d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5"
-                stroke="#fff"
+                stroke="#264071"
                 strokeWidth="2"
               />
             </svg>
-            Add file
-          </PrimaryButton>
-        </Toolbar>
-        <FilesListHead>
-          <FilesListTitle>Name</FilesListTitle>
-          <FilesListTitle>Date</FilesListTitle>
-          <FilesListTitle>Status</FilesListTitle>
-          <FilesListTitle>Format</FilesListTitle>
-        </FilesListHead>
-        <FilesTable>
-          {docs.length == 0 ? (
-            <NoContentTxt>
-              Add your first file{" "}
-              {`${activeCategory.length > 0 ? "in " + activeCategory : ""}`}
-            </NoContentTxt>
-          ) : (
-            docs.map((el) => {
-              return (
-                <DocumentRow id={el.id} className="document" key={el.id}>
-                  <img src={favIcon} alt="Favorite" />
-                  <input type="checkbox" />
-                  <p className="name">{el.name}</p>
-                  <p className="date">{el.date}</p>
-                  <p className="status">• {el.status}</p>
-                  <p className="format">{el.format}</p>
-                </DocumentRow>
-              );
-            })
-          )}
-        </FilesTable>
-      </DocumentsBox>
-    </DocumentsWrapper>
+          </CategoryBtn>
+        </Categories>
+        <DocumentsBox>
+          <H4>My files</H4>
+          <Toolbar className="documents-toolbox">
+            <SearchInput placeholder="Search by name or date" />
+            <FilterDropdown elements={elements} />
+            {selectedDocs.length > 0 ? (
+              <>
+                <IconButton event={() => setToggleDelDocsModal(true)} icon={trashIcon} text="Delete" type="primary" />
+                <IconButton
+                  icon={moveCategory}
+                  text="Move to different category"
+                />
+              </>
+            )
+              : (
+                <>
+                  <div></div>
+                  <div></div>
+                </>
+              )
+            }
+
+            <PrimaryButton event={() => setToggleAddFile(true)}>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.0625 15.0584V10.0292M10.0625 10.0292V5M10.0625 10.0292H15.125M10.0625 10.0292H5"
+                  stroke="#fff"
+                  strokeWidth="2"
+                />
+              </svg>
+              Add file
+            </PrimaryButton>
+          </Toolbar>
+          <FilesListHead>
+            <FilesListTitle>Name</FilesListTitle>
+            <FilesListTitle>Date</FilesListTitle>
+            <FilesListTitle>Status</FilesListTitle>
+            <FilesListTitle>Format</FilesListTitle>
+          </FilesListHead>
+          <FilesTable>
+            {docs.length == 0 ? (
+              <NoContentTxt>
+                Add your first file{" "}
+                {`${activeCategory.length > 0 ? "in " + activeCategory : ""}`}
+              </NoContentTxt>
+            ) : (
+              docs.map((el) => {
+                return (
+                  <DocumentRow onClick={(e) => openDocument(e, el.path)} id={el.id} className="document" key={el.id}>
+                    <img src={favIcon} alt="Favorite" />
+                    <input onClick={(e) => selectDocument(e.target.checked, el.id)} type="checkbox" />
+                    <p className="name">{el.name}</p>
+                    <p className="date">{el.date}</p>
+                    <p className="status">• {el.status}</p>
+                    <p className="format">{el.format}</p>
+                  </DocumentRow>
+                );
+              })
+            )}
+          </FilesTable>
+        </DocumentsBox>
+      </DocumentsWrapper>
+    </>
   );
 };
 

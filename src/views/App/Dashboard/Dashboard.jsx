@@ -9,6 +9,7 @@ import familyIcon from "../../../assets/svg/familyIcon.svg";
 import Visits from './Visits';
 import FreeSpace from './FreeSpace';
 import Family from './Family';
+import AddNewFamily from './AddNewFamily';
 import Documents from "./Documents";
 
 const Dashboard = () => {
@@ -18,35 +19,40 @@ const Dashboard = () => {
     const [docs, setDocs] = useState([]);
     const [family, setFamily] = useState([]);
 
-    useEffect(async ()=> {
+    const [isFamilyModalOpen, setIsFamilyModalOpen] = useState(false);
+
+    useEffect(async () => {
         await getDashboard(process.env.REACT_APP_TEST_USER)
-        .then((res)=> {
-            const data = res.data;
-            setVisits(data.regularVisits);
-            setTakenSpace(data.takenSpace);
-            setDocs(data.documents);
-            setFamily(data.family);
-            console.log("data", data);
-            localStorage.setItem("name", data.userName);
-        });
+            .then((res) => {
+                const data = res.data;
+                setVisits(data.regularVisits);
+                setTakenSpace(data.takenSpace);
+                setDocs(data.documents);
+                setFamily(data.family);
+                console.log("data", data);
+                localStorage.setItem("name", data.userName);
+            });
 
     }, []);
 
     return (
-        <DashboardStructure>
-            <DashboardTile icon={visitsIcon} title='Regular visits'>
-                <Visits visits={visits} />
-            </DashboardTile>
-            <DashboardTile icon={spaceIcon} title="Available space">
-                <FreeSpace takenSpace={takenSpace}/>
-            </DashboardTile>
-            <DashboardTile icon={docsIcon} title="Documents">
-                <Documents docs={docs} />
-            </DashboardTile>
-            <DashboardTile icon={familyIcon} title="Family">
-                <Family family={family}/>
-            </DashboardTile>
-        </DashboardStructure>
+        <>
+            {isFamilyModalOpen && <AddNewFamily closeModal={() => setIsFamilyModalOpen(false)} />}
+            <DashboardStructure>
+                <DashboardTile icon={visitsIcon} title='Regular visits'>
+                    <Visits visits={visits} />
+                </DashboardTile>
+                <DashboardTile icon={spaceIcon} title="Available space">
+                    <FreeSpace takenSpace={takenSpace} />
+                </DashboardTile>
+                <DashboardTile icon={docsIcon} title="Documents">
+                    <Documents docs={docs} />
+                </DashboardTile>
+                <DashboardTile icon={familyIcon} title="Family">
+                    <Family setToggleModalOpen={setIsFamilyModalOpen} family={family} />
+                </DashboardTile>
+            </DashboardStructure>
+        </>
     );
 };
 

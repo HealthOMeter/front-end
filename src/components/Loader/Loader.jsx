@@ -1,0 +1,16 @@
+import { StyledLoader } from "./Loader.styles"
+
+const Loader = () => {
+    <StyledLoader>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </StyledLoader>
+};
+
+export default Loader;
