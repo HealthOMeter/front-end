@@ -5,6 +5,9 @@ export const StyledLoader = styled.div`
   position: relative;
   width: 80px;
   height: 80px;
+  align-self: center;
+  left: 50%;
+  transform: translateX(-25%);
 
   div {
     animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -18,7 +21,7 @@ export const StyledLoader = styled.div`
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #fff;
+    background: #fa497e;
     margin: -4px 0 0 -4px;
   }
 

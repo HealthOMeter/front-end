@@ -4,8 +4,10 @@ import { NoContentTxt } from "../../../styles/typography/text.styles";
 import { NoContentTxtWrapper, VisitsWrapper } from "./Dashboard.styles";
 import RegularVisitTile from "./RegularVisitTile";
 import SmallNextPrevIcon from "../../../components/Icons/SmallNextPrevIcon";
+import Loader from "../../../components/Loader/Loader";
 
 const Visits = ({ visits }) => {
+  const [loader, setLoader] = useState(true);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(3);
   const [flexPosition, setFlexPosition] = useState("center");
@@ -23,6 +25,7 @@ const Visits = ({ visits }) => {
     }
   }, [startIndex]);
 
+  //TODO: refactor the loader and no visits msg
   useEffect(() => {
     if (visits.length > 0) {
       const sortedVisits = visits.sort((elA, elB) => {
@@ -35,12 +38,13 @@ const Visits = ({ visits }) => {
         return 0;
       })
       setRegularVisits(sortedVisits);
+      setLoader(false);
     }
   }, [visits]);
 
-
   return (
     <>
+      {loader && <Loader />}
       {regularVisits.length === 0 ? (
         <NoContentTxtWrapper>
           <NoContentTxt>You don't have any regular visits yet</NoContentTxt>
