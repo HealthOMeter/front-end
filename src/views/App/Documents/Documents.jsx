@@ -34,22 +34,7 @@ import Modal from "../../../components/Modal/Modal";
 
 const Documents = () => {
   const location = useLocation();
-  const [docs, setDocs] = useState([
-    {
-      id: "somerandomID",
-      name: "RTG",
-      date: "2022-12-10",
-      status: "Normal",
-      format: "pdf",
-    },
-    {
-      id: "somerandomID2",
-      name: "RTG",
-      date: "2022-12-10",
-      status: "To check",
-      format: "doc",
-    },
-  ]);
+  const [docs, setDocs] = useState([]);
   const [activeCategory, setActiveCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedDocs, setSelectedDocs] = useState([]);
@@ -114,12 +99,15 @@ const Documents = () => {
         <p>You need to delete some documents to free some space!</p>
         <PrimaryButton event={() => setShowFreeSpaceInfo(false)}>OK</PrimaryButton>
       </Modal>}
+
       <DocumentsWrapper>
         {toggleAddFile && <AddFile closeAddFile={setToggleAddFile} />}
         {toggleCategoryModal && (
           <CreateCategory closeModal={() => setToggleCategoryModal(false)} />
         )}
+
         {toggleDelDocsModal && <DeleteDocsPopup closeModal={() => setToggleDelDocsModal(false)} docsToDelete={selectedDocs} />}
+
         <Categories>
           {categories.length > 0 &&
             categories.map((el) => {
@@ -180,7 +168,7 @@ const Documents = () => {
             <FilterDropdown elements={elements} />
             {selectedDocs.length > 0 ? (
               <>
-                <IconButton event={() => setToggleDelDocsModal(true)} icon={trashIcon} text="Delete" type="primary" />
+                <IconButton event={() => setToggleDelDocsModal(true)} icon={trashIcon} text="Delete" type="button" typeName="primary" />
                 <IconButton
                   icon={moveCategory}
                   text="Move to different category"

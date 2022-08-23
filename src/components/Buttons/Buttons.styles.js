@@ -8,7 +8,7 @@ export const IconBtn = styled.button`
     border: 1px solid #ECECEC;
     border-radius: 7px;
     background-color: transparent;
-    color: ${props => props.type === "primary" ? "#FF8080" : "#515E72"};
+    color: ${props => props.typeName === "primary" ? "#FF8080" : "#515E72"};
     width: max-content;
     padding: 0 1rem;
     cursor: pointer;

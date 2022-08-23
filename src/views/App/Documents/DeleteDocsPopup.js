@@ -13,14 +13,13 @@ const DeleteDocsPopup = ({ closeModal, docsToDelete }) => {
   const [loader, setLoader] = useState(false);
   const userId = process.env.REACT_APP_TEST_USER;
 
-  const deleteHandler = async (docsToDelete) => {
+  console.log(docsToDelete);
+  const deleteHandler = (docsToDelete) => {
     setLoader(true);
-    await docsToDelete.forEach((file) => {
-      deleteFile((userId, file.id))
+      deleteFile(userId, docsToDelete)
       .then((res) =>
         console.log(res)
       );
-    });
     setLoader(false);
   };
 
@@ -79,7 +78,7 @@ const DeleteDocsPopup = ({ closeModal, docsToDelete }) => {
         ) : (
           <div className="bottom-btns">
             <SecondaryButton event={closeModal}>Cancel</SecondaryButton>
-            <PrimaryButton event={() => deleteHandler(docsToDelete)}>
+            <PrimaryButton type="button" event={() => deleteHandler(docsToDelete)}>
               Delete
             </PrimaryButton>
           </div>

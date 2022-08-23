@@ -8,6 +8,11 @@ export const uploadFile = (userId, payload) => {
   return axios.post(`http://localhost:3000/api/UploadFile/${userId}`, payload);
 };
 
-export const deleteFile = (userId, docId) => {
-  return axios.delete(`http://localhost:3000/api/Documents?userId=${userId}&docId=${docId}`);
-}
+export const deleteFile = (userId, payload) => {
+  return axios({
+    method: "delete",
+    headers: { "Content-Type": "application/json" },
+    url: `http://localhost:3000/api/Documents?userId=${userId}`,
+    data: payload,
+  });
+};
