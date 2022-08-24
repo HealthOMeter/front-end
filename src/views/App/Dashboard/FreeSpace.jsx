@@ -11,8 +11,8 @@ import { useEffect, useState } from "react";
 
 const FreeSpace = ({ takenSpace }) => {
   const TOTAL_SPACE = 3;
-  const takenSpaceGB = kbToGb(takenSpace).toFixed(2);
-  const freeSpace = TOTAL_SPACE - takenSpaceGB;
+  const takenSpaceGB = kbToGb(takenSpace);
+  const freeSpace = (TOTAL_SPACE - takenSpaceGB).toFixed(2);
   const takenSpacePercent = (takenSpaceGB / TOTAL_SPACE) * 100;
   const history = useHistory();
 
