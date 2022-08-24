@@ -53,6 +53,19 @@ const Documents = () => {
     setActiveCategory(categories[0]);
   }
 
+  const setStatus = (status)=> {
+    switch (status) {
+      case 0:
+        return "Normal";
+      case 1:
+        return "Abnormal";
+      case 2:
+        return "To check";
+      default:
+        return "";
+    }
+  };
+
   useEffect(() => {
     if (location.state?.freeSpace) {
       setShowFreeSpaceInfo(true);
@@ -62,11 +75,11 @@ const Documents = () => {
   useEffect(() => {
     getFiles(process.env.REACT_APP_TEST_USER, activeCategory).then((res) => {
       const data = res.data;
-      if (data !== undefined && data.length > 0) {
-        setDocs(data);
-      } else {
-        setDocs([]);
-      }
+        if (data !== undefined && data.length > 0) {
+          setDocs(data);
+        } else {
+          setDocs([]);
+        }
     });
   }, [toggleAddFile, activeCategory]);
 
@@ -221,7 +234,7 @@ const Documents = () => {
                     <input onClick={(e) => selectDocument(e.target.checked, el.id)} type="checkbox" />
                     <p className="name">{el.name}</p>
                     <p className="date">{el.date}</p>
-                    <p className="status">• {el.status}</p>
+                    <p className="status">• {setStatus(el.status)}</p>
                     <p className="format">{el.format}</p>
                   </DocumentRow>
                 );
