@@ -35,6 +35,7 @@ import { isoDateFormat } from "../../../utils/isoDateFormat";
 
 const Documents = () => {
   const location = useLocation();
+  const [displayedDocs, setDisplayedDocs] = useState([]);
   const [docs, setDocs] = useState([]);
   const [activeCategory, setActiveCategory] = useState("all");
   const [categories, setCategories] = useState([]);
@@ -43,6 +44,8 @@ const Documents = () => {
     left: 0,
     top: 0
   });
+
+  const [searchValue, setSearchValue] = useState("");
 
   const [toggleAddFile, setToggleAddFile] = useState(false);
   const [toggleCategoryModal, setToggleCategoryModal] = useState(false);
@@ -78,8 +81,10 @@ const Documents = () => {
       const data = res.data;
         if (data !== undefined && data.length > 0) {
           setDocs(data);
+          setDisplayedDocs(data);
         } else {
           setDocs([]);
+          setDisplayedDocs([]);
         }
     });
   }, [toggleAddFile, activeCategory]);
@@ -95,6 +100,16 @@ const Documents = () => {
     });
   }, [toggleCategoryModal]);
 
+  useEffect(() => {
+    if (docs.length > 0) {
+      const filteredDocs = docs.filter((el) => {
+        return el.name.startsWith(searchValue) || el.date.includes(searchValue)
+      });
+      setDisplayedDocs(filteredDocs);
+      if (searchValue === "") setDisplayedDocs(docs);
+    }
+  }, [searchValue]);
+
   //TODO: check data model
   const selectDocument = (isChecked, docId) => {
     if (isChecked) {
@@ -105,7 +120,11 @@ const Documents = () => {
   const openDocument = (e, path) => {
     if (e.currentTarget != e.target) return;
     else window.open(path, "_blank");
-  }
+  };
+
+  const onSearchHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
 
   return (
     <>
@@ -179,7 +198,7 @@ const Documents = () => {
         <DocumentsBox>
           <H4>My files</H4>
           <Toolbar className="documents-toolbox">
-            <SearchInput placeholder="Search by name or date" />
+            <SearchInput event={(e) => onSearchHandler(e)} placeholder="Search by name or date" />
             <FilterDropdown elements={elements} />
             {selectedDocs.length > 0 ? (
               <>
@@ -222,13 +241,13 @@ const Documents = () => {
             <FilesListTitle>Format</FilesListTitle>
           </FilesListHead>
           <FilesTable>
-            {docs.length == 0 ? (
+            {displayedDocs.length == 0 ? (
               <NoContentTxt>
                 Add your first file{" "}
                 {`${activeCategory.length > 0 ? "in " + activeCategory : ""}`}
               </NoContentTxt>
             ) : (
-              docs.map((el) => {
+              displayedDocs.map((el) => {
                 return (
                   <DocumentRow onClick={(e) => openDocument(e, el.path)} id={el.id} className="document" key={el.id}>
                     <img src={favIcon} alt="Favorite" />
