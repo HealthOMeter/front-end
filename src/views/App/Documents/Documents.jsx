@@ -35,7 +35,7 @@ import Modal from "../../../components/Modal/Modal";
 const Documents = () => {
   const location = useLocation();
   const [docs, setDocs] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
   const [categories, setCategories] = useState([]);
   const [selectedDocs, setSelectedDocs] = useState([]);
   const [distance, setDistance] = useState({
@@ -60,7 +60,7 @@ const Documents = () => {
   }, []);
 
   useEffect(() => {
-    getFiles(process.env.REACT_APP_TEST_USER).then((res) => {
+    getFiles(process.env.REACT_APP_TEST_USER, activeCategory).then((res) => {
       const data = res.data;
       if (data !== undefined && data.length > 0) {
         setDocs(data);
@@ -68,7 +68,7 @@ const Documents = () => {
         setDocs([]);
       }
     });
-  }, [toggleAddFile]);
+  }, [toggleAddFile, activeCategory]);
 
   useEffect(() => {
     getCategories(process.env.REACT_APP_TEST_USER).then((res) => {
@@ -76,7 +76,7 @@ const Documents = () => {
       if (data !== undefined && data?.length > 0) {
         setCategories(data);
       } else {
-        setCategories([]);
+        setCategories([""]);
       }
     });
   }, [toggleCategoryModal]);
@@ -118,6 +118,7 @@ const Documents = () => {
                     onClick={(e) => {
                       setIsDropdownVisible(false);
                       setActiveCategory(el);
+
                     }}
                     className={isActive ? "active" : null}
                     active={isActive}

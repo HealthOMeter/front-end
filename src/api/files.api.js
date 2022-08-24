@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getFiles = (userId) => {
-  return axios.get(`http://localhost:3000/api/Documents/${userId}`);
+export const getFiles = (userId, category = "all") => {
+  return axios.get(`http://localhost:3000/api/Documents/${userId}?category=${category}`);
 };
 
 export const uploadFile = (userId, payload) => {
