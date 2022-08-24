@@ -4,6 +4,7 @@ import placeholder from "../../../assets/svg/jpgIcon.svg";
 import { NoContentTxt } from "../../../styles/typography/text.styles";
 import { useEffect, useState, useCallback } from "react";
 import Loader from "../../../components/Loader/Loader";
+import { isoDateFormat } from "../../../utils/isoDateFormat";
 
 const Documents = ({ docs }) => {
     const [docsNode, setDocsNode] = useState("");
@@ -65,7 +66,7 @@ const Documents = ({ docs }) => {
                                         <img src={placeholder} alt="Icon" />
                                         <p className="doc-name">{doc.name}</p>
                                         <p className="doc-category">{doc.category}</p>
-                                        <p className="doc-date">{doc.date}</p>
+                                        <p className="doc-date">{isoDateFormat(doc.date)}</p>
                                     </DocumentRow>
                                 })
                             }

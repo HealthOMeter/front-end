@@ -31,6 +31,7 @@ import DropdownOptions from "./DropdownOptions";
 import { options } from "./options.data";
 import { useLocation } from "react-router-dom";
 import Modal from "../../../components/Modal/Modal";
+import { isoDateFormat } from "../../../utils/isoDateFormat";
 
 const Documents = () => {
   const location = useLocation();
@@ -233,7 +234,7 @@ const Documents = () => {
                     <img src={favIcon} alt="Favorite" />
                     <input onClick={(e) => selectDocument(e.target.checked, el.id)} type="checkbox" />
                     <p className="name">{el.name}</p>
-                    <p className="date">{el.date}</p>
+                    <p className="date">{isoDateFormat(el.date)}</p>
                     <p className="status">• {setStatus(el.status)}</p>
                     <p className="format">{el.format}</p>
                   </DocumentRow>
