@@ -1,11 +1,13 @@
 import { FilterDropdownText } from "./Inputs.styles";
 import separator from "../../assets/svg/separator.svg";
 
-const FilterDropdown = ({ elements, label = "Filter by"}) => {
+const FilterDropdown = ({ elements, event, label = "Filter by"}) => {
     return (
         <FilterDropdownText>
             <span>{label}: <img src={separator} /></span>
-            <select>
+            <select onChange={(e)=> {
+                if (event) event(e);
+            }}>
                 {
                     elements.map((el) => {
                         return <option key={el}>{el}</option>

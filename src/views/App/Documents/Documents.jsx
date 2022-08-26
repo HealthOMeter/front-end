@@ -134,6 +134,22 @@ const Documents = () => {
     setSearchValue(e.target.value);
   };
 
+  const sortBy = (criteria) => {
+    const toBeSorted = [...docs];
+    toBeSorted.sort((a, b) => {
+      let valA = a[criteria];
+      let valB = b[criteria];
+      if (criteria == "name") {
+        valA = valA.toUpperCase();
+        valB = valB.toUpperCase();
+      };
+      if (valA > valB) return 1;
+      if (valA < valB) return -1;
+      return 0;
+    });
+    setDisplayedDocs(toBeSorted);
+  };
+
 
   return (
     <>
@@ -207,7 +223,7 @@ const Documents = () => {
           <H4>My files</H4>
           <Toolbar className="documents-toolbox">
             <SearchInput event={(e) => onSearchHandler(e)} placeholder="Search by name or date" />
-            <FilterDropdown elements={elements} />
+            <FilterDropdown elements={elements} label="Sort by" event={(e) => sortBy(e.target.value)}/>
             {selectedDocs.length > 0 ? (
               <>
                 <IconButton event={() => setToggleDelDocsModal(true)} icon={trashIcon} text="Delete" type="button" typeName="primary" />
