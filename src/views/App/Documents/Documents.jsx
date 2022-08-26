@@ -32,7 +32,10 @@ import { options } from "./options.data";
 import { useLocation } from "react-router-dom";
 import Modal from "../../../components/Modal/Modal";
 import { isoDateFormat } from "../../../utils/isoDateFormat";
+import SmallNextPrevIcon from "../../../components/Icons/SmallNextPrevIcon";
 
+
+// EXTRACT PAGINATION AS A SEPERATE COMPONENT
 const Documents = () => {
   const location = useLocation();
   const [displayedDocs, setDisplayedDocs] = useState([]);
@@ -44,6 +47,9 @@ const Documents = () => {
     left: 0,
     top: 0
   });
+
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(7);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -57,7 +63,7 @@ const Documents = () => {
     setActiveCategory(categories[0]);
   }
 
-  const setStatus = (status)=> {
+  const setStatus = (status) => {
     switch (status) {
       case 0:
         return "Normal";
@@ -79,13 +85,14 @@ const Documents = () => {
   useEffect(() => {
     getFiles(process.env.REACT_APP_TEST_USER, activeCategory).then((res) => {
       const data = res.data;
-        if (data !== undefined && data.length > 0) {
-          setDocs(data);
-          setDisplayedDocs(data);
-        } else {
-          setDocs([]);
-          setDisplayedDocs([]);
-        }
+      if (data !== undefined && data.length > 0) {
+        const docsToDisplay = [...data];
+        setDocs(data);
+        setDisplayedDocs(docsToDisplay);
+      } else {
+        setDocs([]);
+        setDisplayedDocs([]);
+      }
     });
   }, [toggleAddFile, activeCategory]);
 
@@ -106,7 +113,8 @@ const Documents = () => {
         return el.name.startsWith(searchValue) || el.date.includes(searchValue)
       });
       setDisplayedDocs(filteredDocs);
-      if (searchValue === "") setDisplayedDocs(docs);
+
+      if (searchValue === "") setDisplayedDocs([...docs]);
     }
   }, [searchValue]);
 
@@ -125,6 +133,7 @@ const Documents = () => {
   const onSearchHandler = (e) => {
     setSearchValue(e.target.value);
   };
+
 
   return (
     <>
@@ -151,7 +160,6 @@ const Documents = () => {
                     onClick={(e) => {
                       setIsDropdownVisible(false);
                       setActiveCategory(el);
-
                     }}
                     className={isActive ? "active" : null}
                     active={isActive}
@@ -247,20 +255,37 @@ const Documents = () => {
                 {`${activeCategory.length > 0 ? "in " + activeCategory : ""}`}
               </NoContentTxt>
             ) : (
-              displayedDocs.map((el) => {
-                return (
-                  <DocumentRow onClick={(e) => openDocument(e, el.path)} id={el.id} className="document" key={el.id}>
-                    <img src={favIcon} alt="Favorite" />
-                    <input onClick={(e) => selectDocument(e.target.checked, el.id)} type="checkbox" />
-                    <p className="name">{el.name}</p>
-                    <p className="date">{isoDateFormat(el.date)}</p>
-                    <p className="status">• {setStatus(el.status)}</p>
-                    <p className="format">{el.format}</p>
-                  </DocumentRow>
-                );
+              displayedDocs.map((el, idx) => {
+                if (idx >= startIndex && idx < endIndex) {
+                  return (
+                    <DocumentRow onClick={(e) => openDocument(e, el.path)} id={el.id} className="document" key={el.id}>
+                      <img src={favIcon} alt="Favorite" />
+                      <input onClick={(e) => selectDocument(e.target.checked, el.id)} type="checkbox" />
+                      <p className="name">{el.name}</p>
+                      <p className="date">{isoDateFormat(el.date)}</p>
+                      <p className="status">• {setStatus(el.status)}</p>
+                      <p className="format">{el.format}</p>
+                    </DocumentRow>
+                  );
+                }
               })
             )}
           </FilesTable>
+          {
+            startIndex !== 0 && (
+              <SmallNextPrevIcon direction="prev" event={() => {
+                setStartIndex(startIndex - 7);
+                setEndIndex(endIndex - 7)
+              }} />
+            )
+          }
+          {
+            displayedDocs.length > endIndex &&
+            <SmallNextPrevIcon direction="next" event={() => {
+              setStartIndex(startIndex + 7);
+              setEndIndex(endIndex + 7);
+            }} />
+          }
         </DocumentsBox>
       </DocumentsWrapper>
     </>

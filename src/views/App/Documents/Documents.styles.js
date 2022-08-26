@@ -8,6 +8,22 @@ export const DocumentsWrapper = styled.main`
   // height: 71%;
   width: 100%;
   max-height: 65vh;
+
+  .next-visits,
+  .prev-visits {
+    cursor: pointer;
+    margin: 0.5rem;
+    position: absolute;
+  }
+
+  .prev-visits {
+    transform: rotate(180deg);
+    left: 90%;
+  }
+
+  .next-visits {
+    left: 93%;
+  }
 `;
 
 export const Categories = styled.div`
@@ -88,8 +104,8 @@ export const FilesTable = styled.div`
   overflow-y: hidden;
   border: 0.5px solid #EBF0F8;
   border-radius: 0px 0px 7px 7px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 `;
 
 export const DocumentRow = styled.div`
